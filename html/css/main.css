@@ -1,0 +1,151 @@
+/*屏幕宽度小于等于1600px*/
+@media screen and (max-width: 1601px){
+	.left{ width: 100%;}
+	.right{ display: none}
+}
+.contain{padding-left: 25px; padding-right: 25px}
+/* header头部 */
+.header{ width: 100%; height: 86px;}
+.logo{ width: 25%; height: 100%;}
+.logo img{margin-left: 6%; margin-top: 6%; width: 70%}
+/*导航样式*/
+.nav{ width: 65%; height: 100%; line-height: 86px; text-align: center;}
+.nav ul{ display: inline-block; height: 100%;}
+.nav ul li{ position: relative; z-index: 1; float: left; height: 100%; border-left: 1px solid #e6e6e6; text-align: center; }
+.nav ul li:first-child{ border-left: 0}
+.nav ul li.on{ background-color: #a60200; border-left: 1px solid #a60200; height: 96px;}
+.nav ul li:hover{ background-color: #a60200; border-left: 1px solid #a60200; height: 96px;}
+.nav ul li:hover a{ color: #fff}
+.nav a{ display: inline-block; font-size: 16px; text-decoration: none; height: 100%; padding-left: 20px; padding-right: 20px; vertical-align: middle;}
+.nav a.on{ color: #fff;}
+.english{ width: 6%; margin-right: 3px}
+.english img{ width: 100%;}
+/*header结束*/
+/*banner开始*/
+	.banner-pic a{ float: left; }
+	.banner, .banner-pic, .banner-pic a, .banner-pic a img{ width: 100%;}
+	.banner-pic{margin: 0; overflow: hidden;}
+
+	/*焦点图按钮*/
+	.hd{ width: 100%; position: relative;}
+	.hd ul{ width: 1090px; height: 91px; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin-left: auto; margin-right: auto; margin-top: -160px}
+	.hd ul li{ float:left; width:203px; /*height: 91px;*/ background: #fff; cursor:pointer; margin-right: 15px; text-align: center; padding: 2px; overflow: hidden;}
+	.hd img{ width: 100%}
+	.hd ul li.on{ background: #ff0000; margin-top: -5px}
+/*banner结束*/
+/*屏幕宽度大于1600px 即1920px*/
+@media screen and (min-width: 1601px){
+	.left{ width: 1600px; float: left;}
+
+	/*右侧样式*/
+	.right{ width: 320px; float: left;}
+	.phone{ height: 86px; line-height: 86px; text-align: right; color: #2553b3; font-size: 18px; background: url(../images/line.jpg) no-repeat right center; background-origin: content-box}
+	.phone i{ display: inline-block; width:34px; height: 31px; background: url(../images/phone.png) no-repeat left top; vertical-align: middle;}
+	.r-body{ background-color: #e9edf6}
+	/*关于君安*/
+	.about{ padding-top: 40px; height: 246px}
+	.about p{ color: #fff; background-color: #2553b3; line-height: 20px; padding: 13px 10px}
+	/*资讯*/
+	.news h5{ color: #52668f; font-weight: bold; line-height: 35px}
+	.focusbox, .focus, .focus li, .focus li img{ width: 100%;}
+	.focus{ height: 175px; overflow: hidden;}
+	.focus{ margin: 0;}
+	.focus li{ float: left; }
+	.focus li img{ height: 175px}
+	/*焦点图按钮*/
+	.hd{ width: 100%; height:28px;/* position:absolute; left:40%; bottom:5px;*/ position: relative; margin-top: -28px; background:url(../images/bg_grey.png) repeat-x left top;}
+	.hd ul{ width:120px; height: 4px; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin-left: auto; margin-right: auto; margin-top: 12px}
+	.hd ul li{ float:left; width:19px; height: 4px; background: #fff; cursor:pointer; margin-right: 5px;}
+	.hd ul li.on{ background: #ff0000;}
+
+	.news .text{ display: block;}
+	.text span{ color: #2553b3; font-size: 14px; font-weight: normal; line-height: 25px}
+	.text p{ color: #8a8989}
+	/*列表*/
+	.item{ display: table; padding-top: 20px; padding-bottom: 20px}
+	.item a{ display: table-row; background-color: #fff; overflow: hidden; text-decoration: none}
+	.item span{ display: table-cell; height: 50px; border-bottom: 7px solid #e9edf6; vertical-align: middle;}
+	.item span.date{ width: 50px; background-color: #405580; color: #fff; text-align: center;}
+	.item span.text{ display: table-cell; width: 220px; height: 57px; overflow: hidden; text-overflow: ellipsis;
+		background-color: #fff; color: #52668f; padding-left: 10px; padding-right: 10px; vertical-align: middle; line-height: 20px;}
+	.item a:hover span{ background-color: #2553b3;}
+	.item a:hover .text{ background-color: #fff}
+	.r-nav{ height: 122px; background-color: #5d709a; text-align: center;}
+	.r-nav a{ float: left; color: #e2e7f1; line-height: 25px; padding-top: 35px}
+	.r-nav .gap{ display: inline-block; width: 32px; height: 100%}
+	.r-nav img{ width: 32px; height: 33px}
+}
+
+
+/*君安报列表*/
+	.imagebox{ position: relative; width: 635px; height: 362px; overflow: hidden;}
+	.imagebox a{ float: left; width: 100%; height: 290px;}
+	.imagebox a img{  width: 100%; height: 290px;}
+	/*焦点图按钮*/
+	.imagebox .num{  width:100%; height:28px; position: absolute; top: 262px; text-align: center; background:url(../images/bg_grey.png) repeat-x left top;}
+	.imagebox .num span{display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; cursor: pointer; background: #fff; vertical-align: bottom;}
+	.imagebox .num span.on{background: #ffff00}
+
+	.imagebox h5{ font-size: 18px; line-height: 30px; }
+	.imagebox .text{ padding-left: 5px; padding-right: 5px;}	
+	.imagebox .date{ float: right; margin-top: -25px; color: #999999; font-size: 14px}
+	.imagebox p{ color: #999999; line-height: 20px}
+	.junan-bao img{ width: 197px; height: 362px}
+	
+	.thumb{ width: 866px;}
+	.thumb .row{ position: relative; margin-left: -40px; margin-top: 50px}
+	.thumb img{ width: 100%; transition: all 1s;}
+	.thumb img:hover{ transform: scale(1.1,1.1) }	
+	.thumb .column{ float: left; margin-left: 40px; text-align: center; margin-bottom: 30px; line-height: 25px;}
+	.thumb a{ display: block; width: 259px; height: 345px; border: 1px solid #cccccc; border-radius: 2px; overflow: hidden;}
+
+	.paging{ text-align: center; overflow: hidden;}
+	.paging li{ display: inline-block; border-radius: 2px; padding: 3px 8px}
+	.paging li:hover{ background-color: #2553b3;}
+	.paging li:hover a{ color: #fff}
+	.paging li.active{ background-color: #2553b3; color: #2553b3 }
+	.paging li a.active{ color: #fff}
+
+/*布衣堂*/
+	.bg-none{ background: none}
+	.main-t{ height: 360px; padding-top: 1px}
+	.bg-by{ background: url(../images/bg-by.jpg) no-repeat center top;}
+	.by-nav{margin-top: 317px}
+	.by-nav li{ float: left; margin-right: 7px; padding: 10px 20px; background-color: #4682e4; font-size: 16px}
+	.by-nav li a{ color: #fff; text-decoration: none}
+	.by-nav li:hover{ background-color: #a60200}
+	.by-nav li.on{ background-color: #a60200}
+	.main-bot h4{ margin-top: 30px; background: url(../images/blueline.jpg) no-repeat left bottom; background-size: 165px 3px; line-height: 40px; border-bottom: 1px solid #e5e5e5}
+
+	.content{ overflow: hidden; padding-bottom: 30px;}
+	.c-left{ width: 70%; padding-top: 8px}
+	.c-right{width: 28%; padding-top: 8px}
+	.content p{ font-size: 16px; color: #666666; line-height: 30px; text-indent: 2em;}
+	.content p.with-arrow{ background: url(../images/blue-arrow.png) no-repeat 2em center; padding-left: 1em}
+	.content img{ width: 252px; margin-left: 42px}
+	.imgbox{ width: 100%; overflow: hidden; height: 350px}
+	.imgbox>div{ position: absolute; margin-left: -42px}
+	.dnload{ padding-left: 25px; font-size: 14px; color: #4682e4; text-decoration: underline; text-align: right; background: url(../images/arrow_r.png) no-repeat left center;}
+	.c-right .row{ position: absolute; margin-left: -24px; margin-top: 20px; margin-right: 0}
+	.c-right .row img{ width: 156px; height: 97px; margin: 0; border: 3px solid #000000; border-radius: 5px}
+	.c-right .column{ float: left; width: 156px; margin-top: 3px; margin-left: 24px; }
+	.c-right .column span{ display: inline-block; width: 100%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; line-height: 25px}
+	/*底部footer*/
+	.by-foot{ height: 146px; background-color: #343434; padding-top: 25px}
+	.by-foot .logo3{width:235px; height:82px; float: left;}
+	.by-foot .legal,.by-foot .friend-link{ float: left;}
+	.by-foot .legal{ width: 360px; padding-left: 30px;}
+	.by-foot .wx3{ float: left; width: 170px; text-align: center; text-align: right; line-height: 25px}
+	.by-foot .wx3 img{ width: 77px; height: 77px}
+
+	.legal ul li{ display: inline-block; padding: 5px 10px}
+	.legal ul li.line{ width: 1px; height: 14px; background-color: #d9d9d9; padding: 0; margin-bottom: -3px}
+	.legal ul li a{ color: #d9d9d9}
+	.legal span{ display: block; line-height: 30px; padding-left: 15px}
+	.legal span i{ display: inline-block; width: 30px; height: 18px; vertical-align: middle;}
+	.legal .icon-phone{ background: url(../images/i_phone.png) no-repeat left top;}
+	.legal .icon-email{ background: url(../images/i_email.png) no-repeat left top;}	
+	.by-foot .friend-link{ color: #d9d9d9}
+	.by-foot .friend-link select{ padding-left: 10px; margin-bottom: 10px; width: 297px; height: 23px; background: url(../images/f_link_bg.png) no-repeat left top;}
+	.by-foot .friend-link p{ width: 100%; line-height: 20px;}
+	.by-foot .friend-link p span{ padding: 0 20px;}
