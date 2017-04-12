@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript 内置对象</title>
+</head>
+<body>
+    <script>
+        var str = 'I like javascript.';
+        var key = str.indexOf('i', 5);
+        console.log(key)
+
+        var mystr = "I love JavaScript!";
+        console.log(mystr.charAt(2)); //l
+
+        var site = 'www.thinktxt.com';
+        var siteArr = site.split('.');
+        console.log(siteArr)
+
+        var dateArr = ['2017', '04', '12'];
+        var dateStr = dateArr.join('-');
+        console.log(dateStr)
+
+
+        var subMystr = mystr.substring(7);
+        var subMystr2 = mystr.substring(2, 6);
+        var subMystr3 = mystr.substr(2, 4);
+        var mySliceStr= mystr.slice(2, 4);
+        var subMystr5 = mystr.substring(2, -1);
+        console.log(subMystr)
+        console.log(subMystr2)
+        console.log(subMystr3)
+        console.log(mySliceStr)
+        console.log(subMystr5)
+
+        var userInfo = {
+            username: 'cc',
+            sex: '女',
+            work: '前端开发'
+        }
+        console.log(userInfo)
+
+    </script>
+
+</body>
+</html>
