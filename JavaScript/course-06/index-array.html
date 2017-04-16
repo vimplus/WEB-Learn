@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array</title>
+</head>
+<body>
+    <script>
+        var arr = ['a', 'b', 'cccc', 'gggggggg'];
+        var arr2 = arr.slice(0,2);
+        console.log(arr)
+        console.log(arr2)
+
+        var a = ['x', 'y', 'z'];
+        var b = ['a', 'b', 'c'];
+        var c = a.concat(b);
+        console.log(a)
+        console.log(b)
+        console.log(c)
+
+        var arrC = ['x', 'y', 'www'];
+        arrC.splice(0, 1, 'b', 'c', 'k');
+        console.log(arrC);
+
+        var arrD = ['fff', 'ddd', 'www'];
+        var len = arrD.push('cccc','hhhh')
+        console.log(len)
+        console.log(arrD)
+        var arrE = ['ssss', 'ddd', 'www'];
+        arrE.pop()
+        console.log(arrE)
+        var arrF = ['a', 'b', 'c', 'd'];
+        arrF.reverse()
+        console.log(arrF)
+
+        var arrH = ['1', '5', '3']
+        function fn(a, b) {
+            return b - a;
+        }
+        arrH.sort(fn)
+        console.log(arrH)
+    </script>
+</body>
+</html>

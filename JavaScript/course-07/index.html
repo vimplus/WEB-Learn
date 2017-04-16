@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input" type="button" value="点击我，打开新窗口！">
+    <input id="back" type="button" value="后退">
+    <input id="next" type="button" value="前进">
+    <script type="text/javascript">
+        function windowOpen(){
+            window.open('http://www.51rgb.com', '_blank', 'width = 600, height = 400, top = 100, left = 0');
+        }
+        var inp = document.getElementById("input");
+        inp.onclick = windowOpen;
+
+        var back = document.getElementById('back');
+        var next = document.getElementById('next');
+        back.onclick = function () {
+            history.go(-1)
+        }
+        next.onclick = function () {
+            history.go(1)
+        }
+    </script>
+</body>
+</html>
