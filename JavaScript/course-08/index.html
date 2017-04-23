@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+</head>
+
+<body>
+    <p id="ip" title="hello">JavaScript</p>
+    <input id="input" value="hello"/>
+    <script type="text/javascript">
+        var op = document.getElementById("ip");
+        var input = document.getElementById("input");
+        document.write(op.nodeName + "<br>" + op.nodeValue + "<br>" + op.nodeType);
+        document.write(input.nodeName + "<br>" + input.nodeValue + "<br>" + input.nodeType);
+    </script>
+</body>
+
+</html>

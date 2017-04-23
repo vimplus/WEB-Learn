@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="father">
+        <li>大娃</li>
+        <li>二娃</li>
+        <li>三娃</li>
+        <li>四娃</li>
+        <li>五娃</li>
+        <li>六娃</li>
+        <li>七娃</li>
+    </ul>
+    <input type="button" id="createbtn" value="祭出紫金葫芦">
+    <script type="text/javascript">
+        function createnode() {
+            var btn = document.createElement("input");
+            btn.setAttribute("type", "button");
+            btn.setAttribute("class", "class-xx");
+            btn.setAttribute("value", "吸进去");
+            btn.setAttribute("onclick", "removenode()");
+            document.body.appendChild(btn);
+        }
+
+        function removenode() {
+            var fnode = document.getElementById("father");
+            var nodes = fnode.childNodes;
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i] && nodes[i].nodeType == 1) {
+                    var rm = fnode.removeChild(nodes[i]);
+                    rm = null;
+                    return;
+                }
+            }
+        }
+        var createbtn = document.getElementById("createbtn");
+        createbtn.onclick = createnode;
+    </script>
+</body>
+
+</html>

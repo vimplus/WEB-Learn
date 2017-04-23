@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+    <style>
+    .tips-modal {
+        position: fixed;
+        top: 100px;
+        width: 100%;
+        text-align: center;
+    }
+    .tips-modal span {
+        display: inline-block;
+        padding: 10px 30px;
+        font-size: 14px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="tips-modal" id="divBox">
+
+    </div>
+    <p class="p-box">内容01</p>
+    <p class="p-box">内容01</p>
+    <p class="p-box">内容01</p>
+    <p class="p-box">内容01</p>
+    <script type="text/javascript">
+        var pBox = document.getElementsByClassName('p-box');
+        console.log(pBox)
+
+        var divBox = document.getElementById('divBox');
+        var span = document.createElement('span');
+        var text = document.createTextNode('登录成功！');
+        span.appendChild(text);
+        console.log(divBox)
+        divBox.appendChild(span);
+
+
+        setTimeout(function () {
+            divBox.removeChild(span)
+        }, 3000)
+    </script>
+</body>
+
+</html>

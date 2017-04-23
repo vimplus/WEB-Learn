@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+    <style>
+    .text {
+        color: #f00;
+        background-color: #08c;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="tips-modal" id="divBox"><span>本身有文字</span></div>
+    <script type="text/javascript">
+        var divBox = document.getElementById('divBox');
+
+        //divBox.innerText = '<i>LXYWEB</i>'
+        //divBox.innerHTML = '<i>LXYWEB</i>'
+
+        // divBox.style.color = '#f00';
+        // divBox.style.backgroundColor = '#08c';
+        var className = divBox.className;
+        divBox.className = className + ' text';
+
+
+        var val = '   dfdfhfge33    ';
+
+        function trim(str) {
+            var str = str.replace(/(^\s+)|(\s+$)/g, '');
+            return str;
+        }
+
+        console.log(trim(val));
+
+        function isArray(obj) {
+            if (obj && obj.push) {
+                return true;
+            }
+            return false;
+        }
+
+
+    </script>
+</body>
+
+</html>
