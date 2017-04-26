@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+    <title>Document</title>
+    <style>
+        .notice {
+            display: none;
+            position: fixed;
+            top: 100px;
+            left: 45%;
+            padding: 10px 20px;
+            color: #fff;
+            background: rgba(0, 0, 0, .5);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ulBox">
+        <li><span>span的内容</span></li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+    </ul>
+    <span class="notice">发送成功！</span>
+    <button id="btn">按钮</button>
+    <script>
+        var ul = $('#ulBox');
+        var span = ul.children('span');
+        console.log(span)
+
+        var span = ul.find('span');
+        console.log('find找到的：', span)
+        // for (var i = 0; i < children.length; i++) {
+        //     console.log(children[i].innerHTML)
+        // }
+        // children.each(function (key, val) {
+        //     console.log('key:', key)
+        //     console.log('val:', val.innerHTML)
+        // })
+
+        $.each($('#ulBox li'), function (key, val) {
+            console.log('key:', key)
+            console.log('val:', val.innerHTML)
+        })
+        // console.log(children)
+
+        $('#btn').on('click', function () {
+            $('.notice').slideToggle();
+        })
+
+        $('#ulBox').on('click', 'li', function (e) {
+            console.log(e)
+        })
+
+    </script>
+</body>
+</html>
