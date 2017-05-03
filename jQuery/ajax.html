@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+    <title>ajax</title>
+</head>
+<body>
+    <p id="weather"></p>
+    <p id="weatherImg"></p>
+    <script>
+        $.ajax({
+            url: '/text.txt',
+            type: 'GET',
+            success: function (res) {
+                console.log(res)
+            },
+            error: function (err) {
+                console.error(err)
+            }
+        });
+
+        var cityUrl = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js';
+        $.getScript(cityUrl).done(function (res) {
+            var city = remote_ip_info.city;
+            console.log(city)
+
+            var weatherAPI = "http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&city=" + city + "&day=3&dfc=3";
+            console.log(weatherAPI)
+            $.ajax({
+                url: weatherAPI,
+                dataType: 'script',
+                scriptCharset: 'gbk',
+                success: function (data) {
+                    var cityData = window.SWther.w;
+				    console.log(cityData)
+
+                    var weatherData = null;
+    				for(var k in cityData) {
+    					for(var i in cityData[k]){
+    						weatherData = cityData[k][i]
+    					}
+    				}
+    				var _w = weatherData;
+    				var _f = _w.f1 + "_0.png";
+    				if (new Date().getHours() > 17) {
+    					_f = _w.f2 + "_1.png";
+    				}
+    				var img = "<img width='16px' height='16px' src='http://i2.sinaimg.cn/dy/main/weather/weatherplugin/wthIco/20_20/" + _f + "' />";
+    				var tq = city + "  " + _w.s1 + " " + _w.t1 + "℃～" + _w.t2 + "℃ " + _w.d1 + _w.p1 + "级";
+    				$('#weather').html(tq);
+    				$('#weatherImg').html(img);
+
+                },
+                error: function (err) {
+                    console.error(err)
+                }
+            });
+        })
+    </script>
+</body>
+</html>
