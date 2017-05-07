@@ -27,7 +27,7 @@
             var city = remote_ip_info.city;
             console.log(city)
 
-            var weatherAPI = "http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&city=" + city + "&day=3&dfc=3";
+            var weatherAPI = "http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&city=" + city + "&day=2&dfc=3";
             console.log(weatherAPI)
             $.ajax({
                 url: weatherAPI,
@@ -37,13 +37,16 @@
                     var cityData = window.SWther.w;
 				    console.log(cityData)
 
-                    var weatherData = null;
+                    var weatherData = [];
     				for(var k in cityData) {
     					for(var i in cityData[k]){
-    						weatherData = cityData[k][i]
+    						weatherData.push(cityData[k][i])
     					}
     				}
-    				var _w = weatherData;
+    				var _w = weatherData[0];
+    				var _w2 = weatherData[1];
+    				var _w3 = weatherData[2];
+
     				var _f = _w.f1 + "_0.png";
     				if (new Date().getHours() > 17) {
     					_f = _w.f2 + "_1.png";
