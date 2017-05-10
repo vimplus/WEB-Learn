@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input[type="text"] {
+            border: 1px solid #08c;
+        }
+        p[data^="en"] {
+            color: #08c;
+        }
+
+        p[data$="bbb"] {
+            color: #6c0;
+            -webkit-text-fill-color: black;  /*文字内部填充颜色*/
+             -webkit-text-stroke-color: red;  /*文字边界填充颜色*/
+             -webkit-text-stroke-width: 3px;  /*文字边界宽度*/
+        }
+
+        p[data*="ccc"] {
+            color: #6c0;
+        }
+
+        .ul-box li:nth-child(3n+1) {
+            color: #f00;
+        }
+
+        .article-content {
+            width: 1000px;
+            margin: 0 auto;
+            -webkit-column-count: 3;   /*表示布局几列*/
+-webkit-column-rule: 1px solid #bbb;  /*表示列与列之间的间隔条的样式*/
+-webkit-column-gap: 2em;  /*表示列于列之间的间隔*/
+background-image:-webkit-gradient(linear,0% 0%,100% 0%,from(#2A8BBE),
+        color-stop(0.33,#AAD010),color-stop(0.33,#FF7F00),to(#FE280E));
+        }
+
+        .btn {
+            width: 120px;
+            height: 40px;
+            color: #fff;
+            border: none;
+            background: #08c;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all ease .3s;
+        }
+        .btn:hover {
+            width: 150px;
+            background: #06c;
+        }
+        .div-box {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            background: #6c0;
+        }
+        .div-box:hover {
+            transform: scale(2, 1.5);
+        }
+
+        @-webkit-keyframes animname {
+            0% {
+                opacity: 0.2;
+                font-size: 14px;
+            }
+            20% {
+                opacity: 0.5;
+                font-size: 16px;
+            }
+            40% {
+                opacity: 0.8;
+                font-size: 18px;
+            }
+            60% {
+                opacity: 1;
+                font-size: 20px;
+            }
+            80% {
+                opacity: 0.8;
+                font-size: 18px;
+            }
+            100% {
+                opacity: 0.5;
+                font-size: 16px;
+            }
+         }
+
+        .anim-box {
+            width: 200px;
+            height: 200px;
+            margin: 10px auto;
+            background: #08c;
+            animation-name: animname;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <input type="text"/>
+
+    <p data="en-aaa">写点什么文字</p>
+    <p data="en-bbb">写点什么文字</p>
+    <p data="en-ccc">写点什么文字</p>
+    <p data="ccc-ddd">写点什么文字</p>
+
+    <ul class="ul-box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+    </ul>
+
+
+    <p class="article-content">
+        . margin加倍的问题      设置为float的div在ie下设置的margin会加倍。这是一个ie6都存在的bug。解决方案是在这个div里面加上 display:inline;    例如：    <#div id=”imfloat”>    相应的css为     #IamFloat{    float:left;    margin:5px;/*IE下理解为10px*/     display:inline;/*IE下再理解为5px*/}
+
+3.浮动ie产生的双倍距离     #box{ float:left; width:100px;  margin:0 0 0 100px; //这种情况之下IE会产生200px的距离 display:inline; //使浮动忽略}     这里细说一下block与inline两个元素：block元素的特点是,总是在新行上开始,高度,宽度,行高,边距都可以控制(块元素);Inline 元素的特点是,和其他元素在同一行上,不可控制(内嵌元素);    #box{ display:block; //可以为内嵌元素模拟为块元素  display:inline; //实现同一行排列的效果 diplay:table;
+
+4 IE与宽度和高度的问题 IE  不认得min-这个定义，但实际上它把正常的width和height当作有min的情况来使。这样问题就大了，如果只用宽度和高度，正常的浏览器里这两 个值就不会变，如果只用min-width和min-height的话，IE下面根本等于没有设置宽度和高度。     比如要设置背景图片，这个宽度是比较重要的。要解决这个问题，可以这样：    #box{ width: 80px; height:  35px;}html>body #box{ width: auto; height: auto; min-width: 80px;  min-height: 35px;}
+
+5.页面的最小宽度     min  -width是个非常方便的CSS命令，它可以指定元素最小也不能小于某个宽度，这样就能保证排版一直正确。但IE不认得这个，而它实际上把width当 做最小宽度来使。为了让这一命令在IE上也能用，可以把一个<div> 放到 <body> 标签下，然后为div指定一个类,  然后CSS这样设计：    #container{ min-width: 600px;  width:expression(document.body.clientWidth < 600? "600px": "auto"  );}     第一个min-width是正常的；但第2行的width使用了Javascript，这只有IE才认得，这也会让你的HTML文档不太正规。它实际上通 过Javascript的判断来实现最小宽度。
+    </p>
+
+    <button class="btn">按钮</button>
+    <div class="div-box"></div>
+
+    <div class="anim-box"></div>
+</body>
+</html>
