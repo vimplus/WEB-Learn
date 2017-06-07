@@ -1,0 +1,25 @@
+{
+  "name": "koa-demo",
+  "version": "1.0.0",
+  "description": "learn koa",
+  "main": "index.js",
+  "scripts": {
+    "test": "node"
+  },
+  "keywords": [
+    "koa",
+    "build"
+  ],
+  "author": "txboy",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "koa": "^2.2.0",
+    "koa-router": "^7.2.0"
+  }
+}
