@@ -1,0 +1,69 @@
+/* 重置样式 */
+body, div, p, ul, ol, dl, dt, dd, li, form, input, table, th, td, img, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 12px;
+    color: #000;
+    font-style: normal;
+    font-family: 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial', sans-serif;
+    background: #fff;
+}
+
+em, b, i {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+a {
+    color: #08c;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #f50;
+    text-decoration: underline;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+/* master module */
+.module-header {
+    height: 52px;
+    background: #08c;
+}
+
+.header {
+    width: 1244px;
+    height: 52px;
+    margin: 0 auto;
+    background: #f60;
+}
+
+.module-body {
+    min-height: 600px;
+    background: #6c0;
+}
+
+.module-footer {
+    height: 120px;
+    background: #ccc;
+}
+
+.content {
+    width: 990px;
+    margin: 0 auto;
+    background: #09c;
+}
