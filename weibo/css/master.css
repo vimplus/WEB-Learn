@@ -1,4 +1,5 @@
 /* 重置样式 */
+
 body, div, p, ul, ol, dl, dt, dd, li, form, input, table, th, td, img, h1, h2, h3, h4, h5, h6 {
     padding: 0;
     margin: 0;
@@ -39,18 +40,184 @@ table {
     border-collapse: collapse;
 }
 
+input {
+    outline: none;
+}
+
+.flt {float:left;}
+.frt {float:right;}
+.clearfix { *zoom: 1;}
+.clearfix:before, .clearfix:after { display: table; line-height: 0; content: "";}
+.clearfix:after { clear: both;}
+
 /* master module */
+
 .module-header {
-    height: 52px;
-    background: #08c;
+    height: 50px;
+    border-top: 2px solid #fa7d3c;
+    background: #fff;
 }
 
 .header {
     width: 1244px;
     height: 52px;
     margin: 0 auto;
-    background: #f60;
+
 }
+
+.hd-logo {
+    float: left;
+    position: relative;
+    width: 100px;
+    height: 28px;
+    padding: 10px 20px;
+}
+
+.hd-logo .logo {
+    display: inline-block;
+    width: 80px;
+    height: 27px;
+    background: url("../images/WB_logo.png") no-repeat;
+}
+
+.hd-input {
+    float: left;
+    position: relative;
+    width: 450px;
+    padding: 10px 0;
+}
+
+.hd-input .hot-search {
+    width: 438px;
+    height: 22px;
+    padding: 2px 5px;
+    background: #f6f6f6;
+    border: 1px solid #bdbdbd;
+}
+
+.hd-input .hot-search:focus {
+    background: #fff;
+    border: 1px solid #f60;
+}
+
+.hd-input .icon-search {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 18px;
+    height: 23px;
+    background: url("../images/wb_search.png") no-repeat;
+    background-size: 18px 18px;
+    cursor: pointer;
+}
+
+.hd-nav {
+    float: left;
+}
+
+.hd-nav ul {
+    padding: 15px 0;
+    margin-left: 78px;
+    overflow: hidden;
+}
+
+.hd-nav ul li {
+    float: left;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.icon-home {
+    background: url("../images/icon-home.png") no-repeat;
+}
+
+.icon-video{
+    background: url("../images/icon-video.png") no-repeat;
+}
+
+.icon-compass {
+    background: url("../images/icon-compass.png") no-repeat;
+}
+
+.icon-game {
+    background: url("../images/icon-game.png") no-repeat;
+}
+
+.icon-user {
+    background: url("../images/icon-user.png") no-repeat;
+}
+
+.hd-nav ul li a {
+    color: #333;
+}
+
+.hd-nav ul li a:hover {
+    color: #f60;
+    text-decoration: none;
+}
+
+.hd-nav ul li i {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    background-size: 20px 20px;
+    vertical-align: middle;
+}
+
+.hd-nav ul li .nav-text {
+    display: inline-block;
+    margin-left: -2px;
+}
+
+
+
+.hd-options {
+    width: 130px;
+    margin: 15px 0;
+    border-left: 1px solid #ddd;
+}
+
+.hd-options ul li {
+    position: relative;
+    float: left;
+    height: 24px;
+    margin-left: 18px;
+}
+
+.icon-email {
+    background: url("../images/icon-email.png") no-repeat;
+}
+
+.icon-setting {
+    background: url("../images/icon-setting.png") no-repeat;
+}
+
+.icon-edit {
+    background: url("../images/icon-edit.png") no-repeat;
+}
+
+.hd-options ul li a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    background-size: 20px 20px;
+}
+
+.hd-options ul li .corner-mark {
+    display: inline-block;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 0 6px;
+    font-size: 12px;
+    color: #fff;
+    background: #f60;
+    border-radius: 3px;
+}
+
 
 .module-body {
     min-height: 600px;
