@@ -10,7 +10,12 @@ body {
     color: #000;
     font-style: normal;
     font-family: 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial', sans-serif;
-    background: #fff;
+    background-color: #99d6f3;
+}
+
+.user-bg {
+    background: url("../images/web_body_bg.jpg") no-repeat;
+    background-position: center top;
 }
 
 em, b, i {
@@ -221,7 +226,6 @@ input {
 
 .module-body {
     min-height: 600px;
-    background: #6c0;
 }
 
 .module-footer {
@@ -230,7 +234,87 @@ input {
 }
 
 .content {
-    width: 990px;
+    width: 1000px;
     margin: 0 auto;
     background: #09c;
+}
+
+
+.web-iframe {
+    min-height: 600px;
+    padding: 15px 0;
+    box-sizing: border-box;
+    background-color: rgba(52,143,179,0.25);
+}
+
+.web-left {
+    float: left;
+    width: 150px;
+}
+
+.wb-user-nav {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.wb-user-nav:first-child {
+    border-top: none;
+}
+
+.wb-user-nav li {
+    font-size: 14px;
+    line-height: 34px;
+    cursor: pointer;
+}
+
+.wb-user-nav li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.wb-user-nav li a {
+    display: inline-block;
+    width: 100%;
+    padding-left: 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-main {
+    padding-bottom: 12px;
+}
+
+.nav-main li {
+    font-weight: bold;
+}
+
+.nav-subs {
+    padding: 12px 0;
+}
+
+
+.wb-main {
+    float: right;
+    width: 850px;
+    height: 600px;
+
+}
+
+.wb-main-topic {
+    width: 600px;
+    margin-right: 10px;
+}
+
+.wb-publish-box {
+    height: 165px;
+    border-radius: 3px;
+    background: #fff;
+}
+
+.wb-main-sidebar {
+    width: 230px;
+    margin-right: 10px;
+}
+
+.wb-main-sidebar .wb-user-info {
+    height: 165px;
+    background: #fff;
 }
