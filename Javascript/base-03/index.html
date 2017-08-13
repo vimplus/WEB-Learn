@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程控制</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var age = 10;
+        if (age < 14) {
+            console.log('你还是儿童！')
+        } else if (age > 14 && age < 18) {
+            console.log('你还是青少年，未成年，不准进网吧！')
+        } else if (age > 18 && age < 50) {
+            console.log('你已经是知识青年了！')
+        } else {
+            console.log('你已经是老年人了！')
+        }
+
+
+        var eat_arr = [2, 2, 3, 4, 2, 2]; // 吃饭选项数组
+        // 循环条件设置
+        for(var i = 0; i < eat_arr.length; i++){ // 循环开始大括号
+        // 以下为循环内容
+            debugger
+            switch(eat_arr[i]){
+                case 1:
+                case 2:
+                    console.log("米饭");
+                    break;
+                case 3:
+                    console.log("面条");
+                    break;
+                default:
+                    console.log("馒头");
+            }
+        } // 循环结束大括号
+    </script>
+</body>
+</html>
