@@ -19,3 +19,12 @@ var myresult2 = num++ % 4 + 6 * 2; // myresult 是多少呢？
 // console.log('-----myresult1:', myresult1)
 console.log('-----myresult2:', myresult2)
 console.log('-----num:', num)
+
+var a = "6" + "6";
+var b = 6 + 6;
+var c = 6 + '23';
+var d = String(6) + 6;
+console.log('====a:', a)
+console.log('====b:', b)
+console.log('====c:', c)
+console.log('====d:', d)
