@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程控制作业</title>
+</head>
+<body>
+    <script>
+        var num = '15';
+        if (num == null || typeof num != 'number') {
+            console.log(false)
+        } else if ( (num % 3 == 0) && (num % 5 == 0) ) {
+            console.log('fizzbuzz')
+        } else if (num % 3 == 0) {
+            console.log('fizz')
+        } else if (num % 5 == 0) {
+            console.log('buzz')
+        } else {
+            console.log(num)
+        }
+
+        var val = Number('232233')
+        console.log(val)
+    </script>
+</body>
+</html>
