@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 1;
+        var b = 2;
+        var sum = a + b;
+        console.log('a加b的和是：', sum);
+
+        var c = 4;
+        var d = 5;
+        var sum2 = c + d;
+        console.log('c加d的和是：', sum2);
+
+        var e = 123;
+
+        // function add(x, y) {
+        //     var val = x + y;
+        //     console.log('e的值为：', e)
+        //     return val;
+        // }
+        //
+        // var z = add(5, 6);
+        // var m = add(12, 15);
+        // var n = add(18, 12);
+        // var c = add(25, 56);
+        //
+        //
+        // console.log('z的值为：', z)
+        // console.log('m的值为：', m)
+        // console.log('n的值为：', n)
+        // console.log('c的值为：', c)
+
+
+        // function outer() {
+        //     var a = 456;
+        //     function inner() {
+        //         console.log(a)
+        //     }
+        //     return inner();
+        // }
+        //
+        // outer();
+
+
+        var add = null;
+        function outer() {
+            var k = 999;
+
+            add = function (){
+                k ++;
+            }
+            function inner() {
+                console.log(k);
+            }
+            return inner;
+        }
+
+
+        var res = outer();
+        console.log('res:', res)
+        res()
+        add();
+        res()
+        add()
+        res()
+        add()
+        res()
+    </script>
+</body>
+</html>
