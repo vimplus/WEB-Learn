@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlTag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS事件</title>
+    <script>
+        window.onload = function () {
+            var aid = document.getElementById('aid');
+            var btn = document.getElementById('btn');
+            var ipt = document.getElementById('ipt');
+
+            var htmlTag = document.getElementById('htmlTag');
+            var bodyId = document.getElementById('bodyId');
+            var ulTag = document.getElementById('ulTag');
+            var liTag = document.getElementById('liTag');
+            var aTarget = document.getElementById('aTarget');
+            var spanId = document.getElementById('spanId');
+
+            // htmlTag.onclick = function () {
+            //     alert('你点击了HTML标签')
+            // }
+            // bodyId.onclick = function () {
+            //     alert('你点击了body标签')
+            // }
+            // ulTag.onclick = function () {
+            //     alert('你点击了ul标签')
+            // }
+            // liTag.onclick = function () {
+            //     alert('你点击了li标签')
+            // }
+            // aTarget.onclick = function () {
+            //     alert('你点击了a标签')
+            // }
+            spanId.onclick = function (e) {
+                e.stopPropagation();
+                alert('你点击了span标签')
+            }
+            // aid.onclick = function (e) {
+            //     clickMe(e)
+            // };
+            function clickMe(event) {
+                console.log(event)
+                alert('你点我干啥？')
+            }
+            btn.addEventListener('click', function (ev) {
+                console.log(ev)
+                alert('你点到按钮了！')
+            }, true)
+
+            aid.addEventListener('click', function (e) {
+                clickMe(e)
+            }, false)
+
+            ipt.onfocus = function () {
+                console.log('你想输入啥？')
+            }
+
+            ipt.onblur = function () {
+                console.log('你离开了输入框')
+            }
+        }
+
+    </script>
+
+</head>
+<body id="bodyId">
+    <!--<a href="#" onclick="clickMe()">点击我试试</a>-->
+    <a id="aid" href="#">点击我试试</a>
+    <button id="btn">点击按钮</button>
+
+    <input id="ipt" type="text" name="" value="">
+
+
+    <ul id="ulTag">
+        <li id="liTag">
+            <a id="aTarget" href="#"><span id="spanId">点击我</span></a>
+        </li>
+    </ul>
+
+</body>
+</html>
