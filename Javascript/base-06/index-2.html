@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr1 = ['2017', '09', '05'];
+        var arr2 = ['zzz', 'uuu']
+
+        var arr3 = arr1.concat(arr2)
+        console.log(arr1)
+        console.log(arr2)
+        console.log(arr3)
+        var str = arr1.join('-');
+        console.log(str)
+
+        // var arr4 = arr1.slice(0, 1);
+        // console.log(arr4)
+
+        var arr5 = arr1.splice(2, 1, '2018', '06')
+        console.log(arr1)
+        console.log(arr5)
+
+        console.log(arr2.reverse())
+
+
+        function sortNum(a,b) {
+            return b - a;
+            //升序，如降序，把“a - b”该成“b - a”
+        }
+        var myarr1 = new Array("Hello", "John", "love", "JavaScript");
+        var myarr2 = new Array("80", "16", "50", "6", "100", "1");
+        console.log(myarr1.sort());
+        console.log(myarr2.sort());
+        console.log(myarr2.sort(sortNum));
+    </script>
+</body>
+</html>
