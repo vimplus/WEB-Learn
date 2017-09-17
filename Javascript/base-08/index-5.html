@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="father">
+        <li title="force_max">大娃</li>
+        <li id="second_children">二娃</li>
+        <li title="fire">三娃</li>
+        <li>四娃</li>
+        <li>五娃</li>
+        <li>六娃</li>
+        <li>七娃</li>
+    </ul>
+    <script type="text/javascript">
+        function getprenode(node) {
+            var prenode = node.previousSibling;
+            while (prenode && prenode.nodeType != 1) {
+                prenode = prenode.previousSibling;
+            }
+            return prenode;
+        }
+
+        function getnextnode(node) {
+            var nextnode = node.nextSibling;
+            while (nextnode && nextnode.nodeType != 1) {
+                nextnode = nextnode.nextSibling;
+            }
+            return nextnode;
+        }
+        var second_children = document.getElementById("second_children");
+        var first_children = getprenode(second_children);
+        var third_children = getnextnode(second_children);
+        alert(first_children.innerHTML + first_children.title);
+        alert(third_children.innerHTML + third_children.title);
+    </script>
+</body>
+
+</html>
