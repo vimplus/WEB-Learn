@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style media="screen">
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #08c;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+    <title>jquery</title>
+</head>
+<body>
+    <ul id="father">
+        <li id="big-child">大娃</li>
+        <li>
+            <a href="#">二娃</a>
+        </li>
+        <li>三娃</li>
+    </ul>
+    <div id="box" class="box-content" title="javascript"></div>
+    <button id="btn" type="button" name="button">按钮</button>
+    <script type="text/javascript">
+        var box = $('#box');
+        var boxContent = $('.box-content');
+        var div = $('div');
+        console.log(box)
+        console.log(boxContent)
+        console.log(div)
+
+        var title = box.attr('title');
+        // document.getElementById('box').getAttribute('title');
+        console.log(title)
+        box.addClass('bd-box')
+        // box.removeClass('box-content')
+        var btn = $('#btn');
+        btn.on('click', function (e) {
+            // box.toggleClass('hide');
+            // $('#big-child').before('<li>金刚葫芦娃</li>').after('<li>紫金葫芦娃</li>');
+            // box.css({
+            //     width: '300px',
+            //     height: '100px'
+            // })
+            // box.hide()
+            // box.show(300)
+            box.fadeToggle(300)
+        })
+
+        // btn.click(function (e) {
+        //     // box.toggleClass('hide');
+        //     $('#big-child').before('<li>金刚葫芦娃</li>').after('<li>紫金葫芦娃</li>');
+        //     box.css({
+        //         width: '300px',
+        //         height: '100px'
+        //     })
+        // })
+
+        box.hover(function (e) {
+            console.log('鼠标移入')
+        }, function (ev) {
+            console.log('鼠标移出')
+        })
+
+        // $('.box-content').append('<div>文本内容</div>');
+        $('<div>文本内容</div>').appendTo('.box-content');
+
+        var liChilds = $('#father').children('li');
+        var aLink = $('#father').find('a');
+        console.log(liChilds)
+        console.log(aLink)
+    </script>
+</body>
+</html>
