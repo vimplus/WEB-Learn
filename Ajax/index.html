@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ajax() {
+            var xmlHTTP = new XMLHttpRequest();
+            xmlHTTP.open('GET', 'my-data.txt', true)
+            xmlHTTP.send();
+
+            xmlHTTP.onreadystatechange = function (res) {
+                if (xmlHTTP.readyState == XMLHttpRequest.DONE) {
+                    if (xmlHTTP.status == 200) {
+                        console.log(xmlHTTP.responseText)
+                    }
+                }
+            }
+        }
+
+        ajax()
+    </script>
+</body>
+</html>
