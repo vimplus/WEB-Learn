@@ -1,0 +1,20 @@
+{
+  "name": "cms-demo",
+  "version": "1.0.0",
+  "description": "This a node server demo.",
+  "main": "index.js",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "node",
+    "cms"
+  ],
+  "author": "txboy",
+  "license": "ISC"
+}

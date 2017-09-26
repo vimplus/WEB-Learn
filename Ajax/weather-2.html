@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="weather"></div>
+    <div id="weatherImg"></div>
+    <script type="text/javascript">
+        function getWeather() {
+            var cityUrl = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js';
+            $.getScript(cityUrl).done(function (data, textStatus, xhr) {
+                var city = remote_ip_info.city;
+                var weatherAPI = "http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&city=" + city + "&day=0&dfc=3";
+                // debugger
+                $.ajax({
+                    url: weatherAPI,
+                    dataType: 'script',
+                    scriptCharset: 'gbk',
+                    success: function (data) {
+                        var cityData = window.SWther.w;
+                        var weatherData = null;
+                        // debugger
+                        for (var k in cityData) {
+                            for (var i in cityData[k]) {
+                                weatherData = cityData[k][i]
+                            }
+                        }
+                        var _w = weatherData;
+                        var _f = _w.f1 + '_0.png';
+                        if (new Date().getHours() > 17) {
+                            _f = _w.f2 + "_1.png";
+                        }
+                        var img = "<img width='16px' height='16px' src='http://i2.sinaimg.cn/dy/main/weather/weatherplugin/wthIco/20_20/" + _f + "' />";
+                        var tq = city + "  " + _w.s1 + " " + _w.t1 + "℃～" + _w.t2 + "℃ " + _w.d1 + _w.p1 + "级";
+                        $('#weather').html(tq);
+                        $('#weatherImg').html(img);
+                    }
+                })
+            }).fail(function (err) {
+                console.error(err);
+            })
+        }
+
+        getWeather()
+    </script>
+</body>
+</html>
