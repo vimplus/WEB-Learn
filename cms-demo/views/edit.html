@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .form .row-case {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form class="form" id="articleForm" method="post">
+        <div class="row-case">
+            <input id="titleVal" placeholder="请输入文章标题" value="" name="title" />
+        </div>
+        <div class="row-case">
+            <textarea id="contentBox" rows="5" placeholder="请输入文章内容" name="content"></textarea>
+        </div>
+        <div class="row-case">
+            <button id="submitBtn" type="submit">保存</button>
+        </div>
+    </form>
+    <script>
+        $('#submitBtn').on('click',  function (e) {
+            var title = $('#titleVal').val();
+            var content = $('#contentBox').val();
+            debugger
+            $.ajax({
+                url: '/api/article/save',
+                type: 'post',
+                data: {
+                    title: title,
+                    content: content
+                },
+                success: function (res) {
+                    if(res && res.code === 10000) {
+                        alert(res.msg);
+                    }
+                },
+                error: function (err) {
+
+                }
+            })
+            return false;
+        })
+    </script>
+</body>
+</html>
