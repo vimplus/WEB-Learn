@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
     <title>Document</title>
 </head>
+
 <body>
     <form class="form" id="articleForm" method="post">
         <div class="row-case">
@@ -25,28 +27,95 @@
         </div>
     </form>
     <script>
-        $('#submitBtn').on('click',  function (e) {
-            var title = $('#titleVal').val();
-            var content = $('#contentBox').val();
-            debugger
+        function getJSONByURL(url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            var index = url.indexOf('?');
+            if (index == -1) {
+                return "{}"
+            }
+            var str = url.substr(index + 1);
+            var arr = str.split('&');
+            var json = '{';
+            for (var i = 0; i < arr.length; i++) {
+                var s = arr[i].indexOf('=');
+                if (s == -1) {
+                    json += ',"' + arr[i] + '":"undefined"';
+                    continue;
+                }
+                var key = arr[i].substr(0, s);
+                var val = arr[i].substr(s + 1);
+                var comma = ',';
+                if (i == 0) {
+                    comma = '';
+                }
+                json += comma + '\"' + key + '\":' + '\"' + val + '\"';
+            }
+            return json += '}';
+        }
+        var urlParams = JSON.parse(getJSONByURL());
+        if (urlParams.id) {
             $.ajax({
-                url: '/api/article/save',
-                type: 'post',
+                url: '/api/article/findById',
+                type: 'get',
                 data: {
-                    title: title,
-                    content: content
+                    id: urlParams.id
                 },
-                success: function (res) {
-                    if(res && res.code === 10000) {
-                        alert(res.msg);
+                success: function(res) {
+                    if (res && res.code === 10000) {
+                        var data = res.data;
+                        $('#titleVal').val(data.title)
+                        $('#contentBox').val(data.content)
                     }
                 },
-                error: function (err) {
+                error: function(err) {
 
                 }
             })
+        }
+        $('#submitBtn').on('click', function(e) {
+            var title = $('#titleVal').val();
+            var content = $('#contentBox').val();
+            if (urlParams.id) {
+                $.ajax({
+                    url: '/api/article/edit',
+                    type: 'post',
+                    data: {
+                        id: urlParams.id,
+                        title: title,
+                        content: content
+                    },
+                    success: function(res) {
+                        if (res && res.code === 10000) {
+                            alert(res.msg);
+                        }
+                    },
+                    error: function(err) {
+
+                    }
+                })
+            } else {
+                $.ajax({
+                    url: '/api/article/save',
+                    type: 'post',
+                    data: {
+                        title: title,
+                        content: content
+                    },
+                    success: function(res) {
+                        if (res && res.code === 10000) {
+                            alert(res.msg);
+                        }
+                    },
+                    error: function(err) {
+
+                    }
+                })
+            }
             return false;
         })
     </script>
 </body>
+
 </html>
