@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/cms-demo');
 
 var articleModel = require('./article.model');
+var UserModel = require('./user.model');
 
 
 var app = new Koa();
@@ -110,6 +111,36 @@ router.post('/api/article/edit', co.wrap(function* (ctx, next) {
             code: 99999,
             data: null,
             msg: "修改失败!"
+        }
+    }
+
+}))
+
+router.post('/api/user/register', co.wrap(function* (ctx, next) {
+    var params = ctx.request.body;
+    var username = params.username;
+    var userInfo = yield UserModel.findOne({username: username});
+    if (userInfo) {
+        ctx.body = {
+            code: 10001,
+            data: null,
+            msg: "该用户名已存在，请重新输入!"
+        }
+        return;
+    }
+    var doc = yield UserModel.create(params);
+    console.log('-------doc:', doc)
+    if (doc) {
+        ctx.body = {
+            code: 10000,
+            data: doc,
+            msg: "注册成功!"
+        }
+    } else {
+        ctx.body = {
+            code: 99999,
+            data: null,
+            msg: "注册失败!"
         }
     }
 
