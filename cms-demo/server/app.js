@@ -1,9 +1,12 @@
 var Koa = require('koa');
 var KoaRouter = require('koa-router');
 var staticServer = require('koa-static');
+var staticServer = require('koa-static');
 var koaBody = require('koa-body');
 var path = require('path');
 var co = require('co');
+
+var jwt = require('jsonwebtoken');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/cms-demo');
@@ -30,13 +33,51 @@ router.get('/', (ctx, next) => {
 router.post('/api/article/save', co.wrap(function* (ctx, next) {
     // var params = ctx.query;
     var params = ctx.request.body;
-    console.log('-------------params:', params)
-    var doc = yield articleModel.create(params);
-    console.log('-------doc:', doc)
-    ctx.body = {
-        code: 10000,
-        data: doc,
-        msg: "保存成功!"
+    var token = ctx.cookies.get('token');
+    console.log('-------------token：', token)
+    try {
+        var decoded = jwt.verify(token, '51rgb');
+        console.log('-------------decoded:', decoded)
+        console.log('-------------params:', params)
+        var doc = yield articleModel.create(params);
+        console.log('-------doc:', doc)
+        ctx.body = {
+            code: 10000,
+            data: doc,
+            msg: "保存成功!"
+        }
+    } catch (err) {
+        console.log('-------------err:', err)
+        if (err && err.message) {
+            switch (err.message) {
+                case 'invalid token':
+                    ctx.body = {
+                        code: 99999,
+                        data: null,
+                        msg: "非法访问!"
+                    }
+                    break;
+                case 'jwt expired':
+                    ctx.body = {
+                        code: 99999,
+                        data: null,
+                        msg: "未登录或登录过期，请重新登录!"
+                    }
+                    break;
+                default:
+                    ctx.body = {
+                        code: 99999,
+                        data: null,
+                        msg: "System Error!"
+                    }
+            }
+        } else {
+            ctx.body = {
+                code: 99999,
+                data: null,
+                msg: "System Error!"
+            }
+        }
     }
 }))
 
@@ -141,6 +182,45 @@ router.post('/api/user/register', co.wrap(function* (ctx, next) {
             code: 99999,
             data: null,
             msg: "注册失败!"
+        }
+    }
+
+}))
+
+
+
+router.post('/api/user/login', co.wrap(function* (ctx, next) {
+    var params = ctx.request.body;
+    var username = params.username;
+    var password = params.password;
+    var userInfo = yield UserModel.findOne({username: username});
+    if (userInfo) {
+        if (password != userInfo.password) {
+            ctx.body = {
+                code: 10002,
+                data: null,
+                msg: "密码错误，请重新输入!"
+            }
+        } else {
+            var tokenInfo = {
+                uid: userInfo._id,
+                username: userInfo.username,
+                email: userInfo.email,
+            }
+            var token = jwt.sign(tokenInfo, '51rgb', {expiresIn: 60 * 1});
+            console.log('-----token:', token)
+            ctx.cookies.set('token', token)
+            ctx.body = {
+                code: 10000,
+                data: tokenInfo,
+                msg: "登录成功!"
+            }
+        }
+    } else {
+        ctx.body = {
+            code: 10003,
+            data: null,
+            msg: "该用户不存在，请检查!"
         }
     }
 

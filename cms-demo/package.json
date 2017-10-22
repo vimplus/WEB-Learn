@@ -4,6 +4,7 @@
   "description": "This a node server demo.",
   "main": "index.js",
   "dependencies": {
+    "jsonwebtoken": "^8.1.0",
     "koa": "^2.3.0",
     "koa-body": "^1.6.0",
     "koa-router": "^7.2.1",
