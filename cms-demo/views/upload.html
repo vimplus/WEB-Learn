@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <title>上传图片</title>
+</head>
+<body>
+    <form id="uploadForm">
+        <input id="uploadInput" type="file" name="picture">
+        <button id="btnUpload">立即上传</button>
+    </form>
+
+    <script type="text/javascript">
+        $('#btnUpload').on('click', function (e) {
+            var formData = new FormData();
+            var file = $('#uploadInput')[0].files[0];
+            formData.append('img', file)
+            formData.append('filename', file.name);
+            // debugger
+
+            $.ajax({
+                url: '/api/file/upload',
+                type: 'POST',
+                data: formData,
+                processData: false, // 告诉jQuery不要去处理发送的数据
+                contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+                beforeSend: function () {
+                    console.log("正在进行，请稍候");
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res && res.code === 10000) {
+                        alert(res.msg)
+                    }
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            })
+            return false;
+        })
+    </script>
+</body>
+</html>

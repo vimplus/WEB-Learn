@@ -1,7 +1,6 @@
 var Koa = require('koa');
 var KoaRouter = require('koa-router');
 var staticServer = require('koa-static');
-var staticServer = require('koa-static');
 var koaBody = require('koa-body');
 var path = require('path');
 var co = require('co');
@@ -13,6 +12,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/cms-demo');
 
 var articleModel = require('./article.model');
 var UserModel = require('./user.model');
+var fileService = require('./fileService');
 
 
 var app = new Koa();
@@ -21,7 +21,7 @@ var router = new KoaRouter();
 app.use(staticServer(path.resolve(__dirname, '../views')));
 
 app
-  .use(koaBody())
+  .use(koaBody({multipart: true}))
   .use(router.routes())
   .use(router.allowedMethods());
 
@@ -221,6 +221,30 @@ router.post('/api/user/login', co.wrap(function* (ctx, next) {
             code: 10003,
             data: null,
             msg: "该用户不存在，请检查!"
+        }
+    }
+
+}))
+
+
+router.post('/api/file/upload', co.wrap(function* (ctx, next) {
+    var content = ctx.request.body;
+    console.log('------------content:', content)
+    if (content && content.files.img) {
+        console.log('------------fileService:', fileService)
+        var res = yield fileService.upload(content.files.img);
+        if (res) {
+            ctx.body = {
+                code: 10000,
+                data: res,
+                msg: "上传成功!"
+            }
+        } else {
+            ctx.body = {
+                code: 99999,
+                data: null,
+                msg: "上传失败!"
+            }
         }
     }
 
