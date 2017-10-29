@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .flex-box {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+
+            width: 600px;
+            height: 200px;
+            background: #08c;
+        }
+
+        .flex-item {
+            width: 150px;
+            height: 80px;
+            margin: 5px;
+            flex:1 1 150px;
+            font-size: 20px;
+            color: #fff;
+            background: #6c0;
+        }
+
+        .flex-item:nth-child(1) {
+            order: 4;
+        }
+        .flex-item:nth-child(2) {
+            order: 6;
+        }
+        .flex-item:nth-child(3) {
+            order: 5;
+            flex-basis: 300px;
+            align-self: flex-end;
+        }
+        .flex-item:nth-child(4) {
+            order: 3;
+        }
+        .flex-item:nth-child(5) {
+            order: 2;
+        }
+        .flex-item:nth-child(6) {
+            order: 7;
+        }
+        .flex-item:nth-child(7) {
+            order: 1;
+        }
+    </style>
+    <title>Flex 布局</title>
+</head>
+<body>
+    <div class="flex-box">
+        <div class="flex-item">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+        <div class="flex-item">4</div>
+        <div class="flex-item">5</div>
+        <div class="flex-item">6</div>
+        <div class="flex-item">7</div>
+    </div>
+</body>
+</html>
