@@ -1,0 +1,42 @@
+
+/*
+@media screen and (min-width:480px) and (max-width:767px){
+  .box {width: 600px;}
+}
+
+@media only screen (min-width : 768px) and (max-width : 1200px) {
+  .className {
+    width: 600px;
+  }
+}
+*/
+
+/*iPhone 4-5s  竖版*/
+@media only screen and (max-width:640px) and (orientation:portrait){
+  .className {
+    width: 600px;
+  }
+}
+
+
+/* iphone 6 */
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+  .className {
+    width: 600px;
+  }
+}
+
+/*iphone 6 plus*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+  .className {
+    width: 600px;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  /*竖屏 css*/
+}
+@media screen and (orientation: landscape) {
+  /*横屏 css*/
+}
+```
