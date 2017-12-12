@@ -1,0 +1,171 @@
+/*重置样式*/
+body, div, p, ul, ol, dl, dt, dd, li, form, input, table, th, td, img, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 12px;
+    font-style: normal;
+    color: #000;
+    font-family: 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial', sans-serif;
+    background: #fff;
+}
+
+em, b, i {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: #999;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #45B6F7;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+
+/*公共属性*/
+.hide {
+    display: none;
+}
+
+.flt {
+    float: left;
+}
+
+.frt {
+    float: right;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+
+/*主要模块*/
+.module-header {
+    height: 110px;
+}
+
+.module-body {
+    min-height: 600px;
+    background: #6c0;
+}
+
+.module-footer {
+    height: 100px;
+    background: #96c;
+}
+
+.module-content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+.top-menu {
+    height: 50px;
+}
+
+.top-menu-link {
+    float: right;
+}
+
+.top-menu-link li {
+    float: left;
+    padding: 0 15px;
+    font-size: 14px;
+    line-height: 50px;
+}
+
+.header-master {
+    height: 32px;
+}
+
+.header-master .logo {
+    width: 137px;
+    height: 32px;
+}
+
+.header-master .slogan {
+    width: 100px;
+    height: 30px;
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-top: 2px;
+    font-size: 14px;
+    color: #bbb;
+    border-left: 2px solid #eaeaea;
+}
+
+.header-master .slogan p {
+    margin-top: -3px;
+}
+
+.site-navbar {
+    padding-top: 10px;
+}
+.site-navbar > ul > li {
+    position: relative;
+    float: left;
+    font-size: 18px;
+    padding: 0 15px;
+}
+
+.site-navbar > ul > li a:hover {
+    text-decoration: none;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 26px;
+    left: -10px;
+    min-width: 150px;
+    padding: 8px.0;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.sub-menu li a {
+    display: block;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 50px 0 20px;
+}
+
+.sub-menu li a:hover {
+    background-color: #f6f6f6;
+}
+
+.site-navbar > ul > li:hover .sub-menu {
+    display: block;
+}
