@@ -70,6 +70,11 @@ table {
 
 /*主要模块*/
 .module-header {
+    position: relative;
+    background: #fff;
+}
+
+.module-header, .header-inner {
     height: 110px;
 }
 
@@ -87,6 +92,8 @@ table {
     width: 1200px;
     margin: 0 auto;
 }
+
+
 
 
 .top-menu {
@@ -168,4 +175,97 @@ table {
 
 .site-navbar > ul > li:hover .sub-menu {
     display: block;
+}
+
+.site-navbar > ul > li.nav-search {
+    padding-top: 3px;
+}
+
+.search-case {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+
+.icon-search {
+    background: url('../images/search_24x24px.png') no-repeat;
+    background-size: 18px 18px;
+}
+
+.icon-search:hover {
+    background: url('../images/search_24x24px_hover.png') no-repeat;
+    background-size: 18px 18px;
+}
+
+.icon-close {
+    background: url('../images/close_24x24px.png') no-repeat;
+    background-size: 18px 18px;
+}
+
+.icon-close:hover {
+    background: url('../images/close_24x24px_hover.png') no-repeat;
+    background-size: 18px 18px;
+}
+
+.site-search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.site-search.search-show {
+    top: 110px;
+    z-index: 0;
+    transition: all ease 0.3s;
+}
+
+.site-search .search-box {
+    padding: 25px 0;
+    text-align: center;
+}
+
+.site-search-form {
+    display: inline-block;
+}
+
+.site-search-form .site-search-input {
+    float: left;
+    width: 612px;
+    height: 50px;
+    padding: 4px 12px;
+    font-size: 16px;
+    color: #999;
+    border: solid 1px #ddd;
+    box-sizing: border-box;
+    border-radius: 2px 0 0 2px;
+    outline: none;
+}
+
+.site-search-form .site-search-input:focus {
+    border-color: #45B6F7;
+}
+
+.site-search-form .site-search-btn {
+    width: 108px;
+    height: 50px;
+    background: #45B6F7;
+    border-radius: 0 2px 2px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.site-search-form .site-search-btn:hover {
+    opacity: 0.85;
+    filter: alpha(opacity=85);
+}
+
+.icon-search-white {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url('../images/search_24x24px_white.png') no-repeat;
 }
