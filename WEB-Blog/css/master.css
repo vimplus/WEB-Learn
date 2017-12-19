@@ -9,7 +9,7 @@ body {
     font-style: normal;
     color: #000;
     font-family: 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial', sans-serif;
-    background: #fff;
+    background: #f6f6f6;
 }
 
 em, b, i {
@@ -30,7 +30,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: #45B6F7;
 }
 
@@ -67,6 +67,14 @@ table {
     clear: both;
 }
 
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
 
 /*主要模块*/
 .module-header {
@@ -79,8 +87,8 @@ table {
 }
 
 .module-body {
+    padding: 20px 0;
     min-height: 600px;
-    background: #6c0;
 }
 
 .module-footer {
@@ -93,6 +101,24 @@ table {
     margin: 0 auto;
 }
 
+.module-column-title {
+    height: 22px;
+    margin-bottom: 10px;  
+}
+
+.module-column-title h3 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #555;
+}
+
+.module-column-title .more {
+    font-size: 14px;
+}
+
+.module-column-title .more a:hover {
+    text-decoration: none;
+}
 
 
 
@@ -268,4 +294,121 @@ table {
     width: 24px;
     height: 24px;
     background: url('../images/search_24x24px_white.png') no-repeat;
+}
+
+
+/* 主体部分 */
+.module-main {
+    float: left;
+    width: 820px;
+}
+
+
+.module-banner {
+    height: 200px;
+    background: #45B6F7;
+}
+
+.module-ad-large {
+    box-sizing: border-box;
+    height: 140px;
+    padding: 15px 20px;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.module-ad-large .ad-title {
+    font-size: 18px;
+}
+
+.module-ad-large .ad-title .text-red {
+    color: #ff5f52;
+}
+
+.module-ad-large .ad-title a {
+    color: #555;
+}
+
+
+.module-ad-large .ad-title a:hover {
+    color: #45B6F7;
+}
+
+.module-ad-large .ad-desc {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #666;
+    text-indent: 28px;
+}
+
+.module-article-list {
+    min-height: 600px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+}
+
+.list-box li {
+    box-sizing: border-box;
+    height: 192px;
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.list-box li .article-thumbnail {
+    width: 220px;
+    height: 150px;
+}
+
+.article-info {
+    position: relative;
+    margin-left: 235px;
+    color: #999;
+}
+
+.article-info .title {
+    margin-bottom: 10px;
+}
+
+.article-info .title a:hover {
+    text-decoration: none;
+}
+
+.article-info .title .cat {
+    display: inline-block;
+    padding: 3px 6px;
+    font-size: 12px;
+    color: #fff;
+    background: #45BCF9;
+}
+
+.article-info .title .title-link {
+    margin-left: 5px;
+    color: #555;
+}
+
+.article-info .title .title-link:hover {
+    color: #45B6F7;
+}
+
+.article-info .meta {
+    line-height: 30px;
+}
+
+.article-info .meta .author {
+    margin-left: 20px;
+}
+
+.article-info .desc {
+    padding: 5px 0;
+    line-height: 20px;
+}
+
+.module-sidebar {
+    float: right;
+    width: 360px;
+    min-height: 900px;
+    background: rgb(255, 139, 139);
 }
