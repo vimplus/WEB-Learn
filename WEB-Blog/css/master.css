@@ -1,4 +1,5 @@
 /*重置样式*/
+
 body, div, p, ul, ol, dl, dt, dd, li, form, input, table, th, td, img, h1, h2, h3, h4, h5, h6 {
     padding: 0;
     margin: 0;
@@ -41,6 +42,7 @@ table {
 
 
 /*公共属性*/
+
 .hide {
     display: none;
 }
@@ -77,6 +79,7 @@ table {
 
 
 /*主要模块*/
+
 .module-header {
     position: relative;
     background: #fff;
@@ -84,6 +87,12 @@ table {
 
 .module-header, .header-inner {
     height: 110px;
+    background: #fff;
+}
+
+.header-inner {
+    position: relative;
+    z-index: 5;
 }
 
 .module-body {
@@ -103,7 +112,7 @@ table {
 
 .module-column-title {
     height: 22px;
-    margin-bottom: 10px;  
+    margin-bottom: 10px;
 }
 
 .module-column-title h3 {
@@ -119,8 +128,6 @@ table {
 .module-column-title .more a:hover {
     text-decoration: none;
 }
-
-
 
 .top-menu {
     height: 50px;
@@ -164,14 +171,15 @@ table {
 .site-navbar {
     padding-top: 10px;
 }
-.site-navbar > ul > li {
+
+.site-navbar>ul>li {
     position: relative;
     float: left;
     font-size: 18px;
     padding: 0 15px;
 }
 
-.site-navbar > ul > li a:hover {
+.site-navbar>ul>li a:hover {
     text-decoration: none;
 }
 
@@ -199,11 +207,11 @@ table {
     background-color: #f6f6f6;
 }
 
-.site-navbar > ul > li:hover .sub-menu {
+.site-navbar>ul>li:hover .sub-menu {
     display: block;
 }
 
-.site-navbar > ul > li.nav-search {
+.site-navbar>ul>li.nav-search {
     padding-top: 3px;
 }
 
@@ -238,14 +246,14 @@ table {
     top: 0;
     left: 0;
     right: 0;
-    z-index: -1;
+    z-index: 1;
     height: 100px;
     background: rgba(255, 255, 255, 0.8);
 }
 
 .site-search.search-show {
     top: 110px;
-    z-index: 0;
+    z-index: 2;
     transition: all ease 0.3s;
 }
 
@@ -298,16 +306,98 @@ table {
 
 
 /* 主体部分 */
+
 .module-main {
     float: left;
     width: 820px;
 }
 
-
+/* banner start */
 .module-banner {
     height: 200px;
     background: #45B6F7;
 }
+
+.banner-box {
+    width: 820px;
+    height: 200px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.banner-box .img {
+    width: 5000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.banner-box .img li {
+    float: left;
+}
+
+.banner-box .li {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+}
+
+.banner-box .li li {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.banner-box .but {
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    width: 38px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: '宋体';
+    cursor: pointer;
+    display: none;
+}
+
+.banner-box:hover .but {
+    display: block;
+}
+
+.banner-box .but-left {
+    left: 0;
+}
+
+.banner-box .but-right {
+    right: 0;
+}
+
+.banner-box .li .index {
+    background: #f60;
+    width: 30px;
+    border-radius: 10px;
+}
+
+.banner-box .bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    background-color: hsla(24, 100%, 50%, 0.5);
+}
+
+/* banner end */
+
 
 .module-ad-large {
     box-sizing: border-box;
@@ -329,7 +419,6 @@ table {
 .module-ad-large .ad-title a {
     color: #555;
 }
-
 
 .module-ad-large .ad-title a:hover {
     color: #45B6F7;
@@ -404,6 +493,37 @@ table {
 .article-info .desc {
     padding: 5px 0;
     line-height: 20px;
+}
+
+.meta span {
+    line-height: 18px;
+}
+
+.meta i {
+    position: relative;
+    padding-left: 15px;
+    margin-right: 15px;
+}
+
+.meta i::before {
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    content: '';
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+.meta .icon-time::before {
+    background: url('../images/time_16x16px.png') no-repeat;
+    background-size: 12px 12px;
+}
+
+.meta .icon-user::before {
+    background: url('../images/user_16x16px.png') no-repeat;
+    background-size: 10px 12px;
 }
 
 .module-sidebar {
