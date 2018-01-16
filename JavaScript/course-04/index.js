@@ -66,3 +66,47 @@ function makeAdder(x) {
 
 var add6 = makeAdder(6);
 console.log(add6(3));
+
+
+function once() {
+    var flag = true;
+    return function () {
+        if (flag) {
+            console.log(1);
+            flag = false;
+        } else {
+            console.log(2);
+            flag = true;
+        }
+    }
+}
+
+var runOnce = once();
+runOnce();
+runOnce();
+runOnce();
+runOnce();
+runOnce();
+runOnce();
+runOnce();
+runOnce();
+
+var mark = true;
+function run() {
+    if (mark) {
+        console.log(1);
+        mark = false;
+    } else {
+        console.log(2);
+        mark = true;
+    }
+}
+console.log('----------------------------')
+run();
+run();
+run();
+run();
+run();
+run();
+run();
+run();
