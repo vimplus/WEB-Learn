@@ -44,8 +44,11 @@ var b = {};
 
 for (var key in a) {
     console.log('key:', key)
+    console.log('a[key]:', a[key])
+    debugger
     b[key] = a[key];
 }
+
 
 b.i = 'iii';
 
