@@ -50,3 +50,41 @@ console.log(subStrRet)
 
 var sliceStr = myStr.slice(2, 6);
 console.log(sliceStr);
+
+var now = new Date();
+var mon = now.getMonth() + 1;
+var m = now.getMinutes();
+var minutes = m < 10 ? '0' + m : m;
+console.log(mon)
+console.log(m)
+console.log(minutes)
+
+
+var strVal = 'gsdafaddddddsssrddfwe';
+
+function maxNum(str) {
+    var obj = {};
+    for (var i = 0; i < str.length; i++) {
+        var key = str[i];
+        if(!obj[key]) {
+            obj[key] = 1;
+        } else {
+            obj[key]++;
+        }
+    }
+    console.log(obj);
+    var maxStr = '';
+    var maxKey = 0;
+    for (var key in obj) {
+        if (obj[key] > maxKey) {
+            maxStr = key;
+            maxKey = obj[key];
+        }
+    }
+    console.log({
+        maxStr: maxStr,
+        maxKey: maxKey,
+    })
+}
+
+maxNum(strVal)
