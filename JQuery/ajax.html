@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <p id='pid'></p>
+    <table id="box">
+        <tr><th>商品编号</th><th>商品标题</th><th>单价</th></tr>
+    </table>
+    <script type="text/javascript">
+        function ajax() {
+            var http = new XMLHttpRequest();
+            http.open('GET', '/data.txt');
+            http.send();
+
+            http.onreadystatechange = function () {
+                if (http.readyState == XMLHttpRequest.DONE) {
+                    // debugger
+                    if (http.status == 200) {
+                        console.log(http.responseText)
+                        document.getElementById('pid').innerHTML = http.responseText;
+                    } else if (http.status == 404) {
+                        console.error('找不到该页面！')
+                    } else {
+                        console.error('其他系统错误！')
+                    }
+                }
+            }
+        }
+        // ajax()
+
+        $.ajax({
+            type: 'GET',
+            url: '/goods.json',
+            success: function (res) {
+                console.log(res)
+                if (res && res.code === 10000) {
+                    var list = res.data.list;
+                    var html = '';
+                    for (var i = 0; i < list.length; i++) {
+                        var item = list[i];
+                        html += '<tr><td>'+ item.sku +'</td><td>'+ item.name +'</td><td>'+ (item.price / 100).toFixed(2) +'</td></tr>'
+                    }
+                    console.log(html)
+                    $('#box').append(html);
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

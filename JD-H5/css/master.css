@@ -1,0 +1,112 @@
+/* 下载APP banner */
+.download-banner {
+    height: 50px;
+    background: #88c;
+}
+
+/* 头部区域 */
+.module-header {
+    position: relative;
+    height: 50px;
+    background: #de181b;
+    opacity: 0.9;
+}
+
+.module-header .jd-search-box {
+    margin: 0 10px;
+    height: 100%;
+}
+
+.jd-search-form {
+    padding: 10px 0;
+}
+
+.jd-search-form-box {
+    position: relative;
+    width: 320px;
+    height: 30px;
+    padding-left: 30px;
+    background: #fff;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+.jd-search-form-box i {
+    display: inline-block;
+    position: absolute;
+}
+
+.jd-search-form-icon {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAB/0lEQVRIiaXVTUhVQRjG8d+1Mm2TRWALoXLRh4i1yPbRIoNw0SJwGS1KKSqLCgJpU1BBughKaJ2LwEUGfe7aFQR9aUEUVOSuDyIuWlKLM2PT6VzJex848M4z5/3PzHvOzJSGh4dV0DL0YAc6sBLT+IDXuIURfK4EWFjgNeAIjqMp11eP9eHZiTO4gEGU86C6XHs1HuFsAbhITWGAhyG3IrwFD9CeeOPoR1tYUUOI+0NfVHvIbSmCN2A06SyjT1brQUxgKjwTwevAQdl3iJMbRWMefhidIZ5GNy5jJr/URDO4JKt9HKAzsGbhy3EySTqK+3NA87onK1PUicBUJ/vdloaOF2HG89WVkCuweiJ8e/LSVXOXopJmQm5UV4RvSsw7VYCjbifxxghvTsw3NcDT3OYIn0rMXzXA093+M8InE7O1BviqJJ6M8FeJ2VUDfGsSP4nw9CPuxYIqwCX0Ju27ET6Cr8Fsx/4q4H3+nEnfcT3CP+Fc8uJFbJsHeDPOJ+2hwJw9W4bwLMT1GMM+/x7JqUqynTiGJcF7LjuCpfAyduFjaDfKtvRTHMI6LMJirJXV9zGuyW6oqBZZieqhlLvm1uCGv8/0ajSO7vyy32ILTuHLf0C+Kd7VbRgoqmlZds214gBu4h1+yHbz++D1yq62DThWNJl8WWrRCpzGHrzE7t8cqmerthhqyQAAAABJRU5ErkJggg==") no-repeat 100%;
+    width: 1.2em;
+    height: 1.2rem;
+    top: 8px;
+    left: 25px;
+    background-size: contain;
+}
+
+.jd-search-input {
+    display: inline-block;
+    width: 90%;
+    margin: 7px 15px 7px 0;
+    height: 16px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+.jd-search-login {
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.jd-login-link {
+    display: inline-block;
+    padding-top: 15px;
+    color: #fff;
+}
+
+/* 底部菜单 */
+.module-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: 50px;
+    background: #08c;
+}
+
+/* banner区域 */
+.module-banner {
+    position: relative;
+    height: 280px;
+}
+
+.module-focus {
+    height: 183px;
+    background: #8b0b0f;
+}
+
+.module-hot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 115px;
+    background: #ef4064;
+    border-radius: 12px 12px 0 0;
+}
+
+/* 常用购物入口 */
+.module-app {
+    height: 162px;
+    background: #26e897;
+}
+
+/* 每日福利 */
+.module-daily {
+    height: 115px;
+    background: #f60;
+}
