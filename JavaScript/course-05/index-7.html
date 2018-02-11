@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="pid">javascript</p>
+    <button id="btn" type="button" name="button">按钮</button>
+
+    <script type="text/javascript">
+    var btn = document.getElementById("btn");
+    btn.onmouseover = over;
+    btn.onmouseout = out;
+
+    function over() {
+        var pid = document.getElementById("pid");
+        pid.innerHTML = "over";
+    }
+
+    function out() {
+        var pid = document.getElementById("pid");
+        pid.innerHTML = "out";
+    }
+    </script>
+</body>
+</html>

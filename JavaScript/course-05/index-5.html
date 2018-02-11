@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form class="" action="index.html" method="post">
+        <button id="btnCase" type="submit" name="button">按钮</button>
+    </form>
+
+    <script type="text/javascript">
+        var btn = document.getElementById('btnCase');
+        // btn.onclick = function (event) {
+        //     console.log(event)
+        //     alert('你踩到我了，赔钱！')
+        // }
+
+        function fn(event) {
+            console.log(event)
+            alert('你踩到我了，赔钱！')
+            return;
+        }
+
+        btn.addEventListener('click', fn, true);
+    </script>
+</body>
+</html>
