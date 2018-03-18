@@ -4,7 +4,7 @@
  * www.thinktxt.com
  */
 html {
-  font-size: 62.5%; /* 10px = 1em = 100% = 8pt */
+  font-size: 100px; /* 10px = 1em = 100% = 8pt */
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;

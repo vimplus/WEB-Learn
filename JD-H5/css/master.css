@@ -104,9 +104,31 @@
     height: 162px;
     background: #26e897;
 }
+.app-content {
+    width: 3rem;
+    height: 1.5rem;
+    margin: 0 auto;
+    background: #fff;
+}
 
 /* 每日福利 */
 .module-daily {
     height: 115px;
     background: #f60;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .module-app {
+        background: #ff0;
+    }
+}
+
+/* iphone 8 plus */
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3){
+    html {
+        font-size: 120px;
+    }
+    .module-app {
+        background: #08c;
+    }
 }
