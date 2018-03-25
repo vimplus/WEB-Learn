@@ -1,0 +1,20 @@
+{
+  "name": "web-blog",
+  "version": "1.0.0",
+  "description": "a simple personal blog.",
+  "main": "app.js",
+  "scripts": {
+    "server": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "txboy",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "koa": "^2.5.0",
+    "koa-router": "^7.4.0"
+  }
+}
