@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .input-field {
+            padding: 5px 0;
+        }
+        .btn-save {
+            margin-left: 53px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <form id="edit-form">
+        <div class="input-field">
+            <span>标题：</span>
+            <input id="title"/>
+        </div>
+        <div class="input-field">
+            <span>内容：</span>
+            <textarea id="content" rows="5"></textarea>
+        </div>
+        <button class="btn-save" type="submit">保存</button>
+    </form>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#edit-form').on('submit', function(res) {
+                var title = $('#title').val();
+                var content = $('#content').val();
+
+                debugger
+
+                $.ajax({
+                    url: '/api/news/save',  // http://127.0.0.1:8080/api/news/save
+                    type: 'post',
+                    data: {
+                        title: title,
+                        content: content
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log(res)
+                        // debugger
+                    },
+                    error: function (err) {
+                        console.error(err)
+                    } 
+                })
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>
