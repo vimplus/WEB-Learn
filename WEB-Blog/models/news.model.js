@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const News = new Schema({
     title: String,
     content: String,
+    author: String,
     createdTime: Number
 });
 

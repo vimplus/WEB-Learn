@@ -103,4 +103,86 @@ $(document).ready(function (e) {
             $(".banner-box .li li").eq(i).addClass('index').siblings().removeClass('index'); //给相应的按钮添加样式
         }
     }
+
+
+
+    // 请求首页文章列表
+    function getList() {
+        // var temp = `<li>
+        //     <img class="article-thumbnail flt" src="./images/kgc2.jpg" alt="">
+        //     <div class="article-info">
+        //         <h2 class="title">
+        //             <a class="cat" href="">
+        //                 课工场
+        //                 <i class="icon-arrow"></i>
+        //             </a>
+        //             <a class="title-link" href="">${item.title}</a></h2>
+        //         <div class="meta">
+        //             <i class="icon-time">2017-10-21</i>
+        //             <i class="icon-user">课工场</i>
+        //         </div>
+        //         <div class="desc">
+        //             工作累，拿钱少？想转行，但是自己学历不高，又没有其他技能怎么办？难道自己一辈子就这样了...... 不，我要逆袭！敲敲代码，照样月月高薪，0基础也不怕，快来看腾讯前端大咖揭秘月薪30k的方法......
+        //         </div>
+        //     </div>
+        // </li>`
+
+        
+        $.ajax({
+            url: '/api/article/list',
+            type: 'get',
+            success: function (res) {
+                if (res && res.code === 10000) {
+                    var list = res.data.list || [];
+                    console.log(list)
+                    var liHTML = '';
+                    for (let i = 0; i < list.length; i++) {
+                        var item = list[i];
+                        // liHTML += '<li>'+
+                        //     '<img class="article-thumbnail flt" src="./images/kgc2.jpg" alt="">'+
+                        //     '<div class="article-info">'+
+                        //         '<h2 class="title">'+
+                        //             '<a class="cat" href="">'+ (item.author || '未知') +
+                        //                 '<i class="icon-arrow"></i>'+
+                        //             '</a>'+
+                        //             '<a class="title-link" href="">'+ item.title + '</a></h2>'+
+                        //         '<div class="meta">'+
+                        //             '<i class="icon-time">'+ item.createdTime +'</i>'+
+                        //             '<i class="icon-user">'+ (item.author || '未知') +'</i>'+
+                        //         '</div>'+
+                        //         '<div class="desc">'+ item.content +'</div>'+
+                        //     '</div>'+
+                        // '</li>'
+                        
+                        liHTML += `<li>
+                            <img class="article-thumbnail flt" src="./images/kgc2.jpg" alt="">
+                            <div class="article-info">
+                                <h2 class="title">
+                                    <a class="cat" href="">
+                                        ${item.author || '未知'}
+                                        <i class="icon-arrow"></i>
+                                    </a>
+                                    <a class="title-link" href="/detail.html?id=${item._id}">${item.title}</a></h2>
+                                <div class="meta">
+                                    <i class="icon-time">${item.author || '未知'}</i>
+                                    <i class="icon-user">${item.createdTime}</i>
+                                </div>
+                                <div class="desc">${item.content}</div>
+                            </div>
+                        </li>`
+                    }
+                    // console.log(liHTML)
+                    $('#listBox').append(liHTML)
+                }
+                // console.log(res)
+                // debugger
+            },
+            error: function (err) {
+                console.error(err)
+            } 
+        })
+    }
+
+    getList();
+
 });

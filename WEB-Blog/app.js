@@ -37,6 +37,7 @@ router.post('/api/news/save', async (ctx, next) => {
     const data = {
         title: payload.title,
         content: payload.content,
+        author: payload.author,
         createdTime: Date.now()
     }
     const res = await News.create(data);
@@ -51,6 +52,34 @@ router.post('/api/news/save', async (ctx, next) => {
         msg: '保存成功！'
     }
     // debugger
+});
+
+
+router.get('/api/article/list', async (ctx, next) => {
+    const list = await News.find({});
+
+    ctx.body = {
+        code: 10000,
+        data: {
+            list: list || []
+        },
+        msg: '请求成功！'
+    }
+});
+
+router.get('/api/article/get', async (ctx, next) => {
+    const params = ctx.query;
+    console.log(params);
+
+    const doc = await News.findOne({
+        _id: params.id
+    });
+
+    ctx.body = {
+        code: 10000,
+        data: doc,
+        msg: '请求成功！'
+    }
 });
 
 // 监听服务端口

@@ -24,6 +24,10 @@
             <span>内容：</span>
             <textarea id="content" rows="5"></textarea>
         </div>
+        <div class="input-field">
+                <span>作者：</span>
+                <input id="author"/>
+            </div>
         <button class="btn-save" type="submit">保存</button>
     </form>
 
@@ -33,18 +37,22 @@
             $('#edit-form').on('submit', function(res) {
                 var title = $('#title').val();
                 var content = $('#content').val();
-
-                debugger
+                var author = $('#author').val();
 
                 $.ajax({
                     url: '/api/news/save',  // http://127.0.0.1:8080/api/news/save
                     type: 'post',
                     data: {
                         title: title,
-                        content: content
+                        content: content,
+                        author: author
                     },
                     dataType: 'json',
                     success: function (res) {
+                        if (res && res.code === 10000) {
+                            alert(res.msg);
+                            location.href = '/'
+                        }
                         console.log(res)
                         // debugger
                     },
