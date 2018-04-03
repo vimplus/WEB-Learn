@@ -82,6 +82,48 @@ router.get('/api/article/get', async (ctx, next) => {
     }
 });
 
+router.del('/api/article/:id', async (ctx, next) => {
+    const params = ctx.params;
+    console.log(params);
+
+    const result = await News.deleteOne({
+        _id: params.id
+    });
+
+    if (result && result.n === 1) {
+        ctx.body = {
+            code: 10000,
+            data: result,
+            msg: '删除成功！'
+        }
+    } else {
+        ctx.body = {
+            code: 99999,
+            data: null,
+            msg: '删除失败！'
+        }
+    }
+});
+
+router.post('/api/news/edit', async (ctx, next) => {
+    const payload = ctx.request.body;
+    const id = payload.id;
+
+    const result = await News.findOneAndUpdate({ _id: id }, payload, { new: true });
+
+    if (!result) {
+        ctx.body = {code: 99999, msg: '修改失败！'};
+        return;
+    }
+
+    ctx.body = {
+        code: 10000,
+        data: result,
+        msg: '修改成功！'
+    }
+    // debugger
+});
+
 // 监听服务端口
 app.listen(port, () => {
     console.log('The app start at port:', port);

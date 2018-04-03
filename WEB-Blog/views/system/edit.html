@@ -33,11 +33,69 @@
 
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script>
+        $.getUrlParam = function(name) {
+            var reg = new RegExp("(^|&)" + name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r!=null) return unescape(r[2]);
+            return null;
+        }
+        
+        
+
         $(document).ready(function () {
+            var id = $.getUrlParam('id');
+            if (id) {
+                $.ajax({
+                    url: '/api/article/get',
+                    type: 'get',
+                    data: {
+                        id: id
+                    },
+                    success: function (res) {
+                        // debugger
+                        if (res && res.code === 10000) {
+                            var data = res.data;
+                            $('#title').val(data.title);
+                            $('#content').val(data.content);
+                            $('#author').val(data.author);
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+                });
+            }
+
             $('#edit-form').on('submit', function(res) {
+                
                 var title = $('#title').val();
                 var content = $('#content').val();
                 var author = $('#author').val();
+
+                if (id) {
+                    $.ajax({
+                        url: '/api/news/edit',
+                        type: 'post',
+                        data: {
+                            id: id,
+                            title: title,
+                            content: content,
+                            author: author
+                        },
+                        success: function (res) {
+                            if (res && res.code === 10000) {
+                                alert(res.msg);
+                                location.href = '/system/article-list.html'
+                            }
+                            console.log(res)
+                            // debugger
+                        },
+                        error: function (err) {
+                            console.error(err)
+                        } 
+                    })
+                    return;
+                }
 
                 $.ajax({
                     url: '/api/news/save',  // http://127.0.0.1:8080/api/news/save
