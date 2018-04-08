@@ -56,7 +56,16 @@ router.post('/api/news/save', async (ctx, next) => {
 
 
 router.get('/api/article/list', async (ctx, next) => {
-    const list = await News.find({});
+    const payload = ctx.query;
+    console.log('-------payload: ', payload);
+    const keyword = payload.value;
+    console.log('-------keyword:', keyword);
+    const cond = {};
+    if (keyword) {
+        cond.title = new RegExp(keyword, 'i');
+    }
+
+    const list = await News.find(cond);
 
     ctx.body = {
         code: 10000,

@@ -108,26 +108,6 @@ $(document).ready(function (e) {
 
     // 请求首页文章列表
     function getList() {
-        // var temp = `<li>
-        //     <img class="article-thumbnail flt" src="./images/kgc2.jpg" alt="">
-        //     <div class="article-info">
-        //         <h2 class="title">
-        //             <a class="cat" href="">
-        //                 课工场
-        //                 <i class="icon-arrow"></i>
-        //             </a>
-        //             <a class="title-link" href="">${item.title}</a></h2>
-        //         <div class="meta">
-        //             <i class="icon-time">2017-10-21</i>
-        //             <i class="icon-user">课工场</i>
-        //         </div>
-        //         <div class="desc">
-        //             工作累，拿钱少？想转行，但是自己学历不高，又没有其他技能怎么办？难道自己一辈子就这样了...... 不，我要逆袭！敲敲代码，照样月月高薪，0基础也不怕，快来看腾讯前端大咖揭秘月薪30k的方法......
-        //         </div>
-        //     </div>
-        // </li>`
-
-        
         $.ajax({
             url: '/api/article/list',
             type: 'get',
@@ -135,44 +115,7 @@ $(document).ready(function (e) {
                 if (res && res.code === 10000) {
                     var list = res.data.list || [];
                     console.log(list)
-                    var liHTML = '';
-                    for (let i = 0; i < list.length; i++) {
-                        var item = list[i];
-                        // liHTML += '<li>'+
-                        //     '<img class="article-thumbnail flt" src="./images/kgc2.jpg" alt="">'+
-                        //     '<div class="article-info">'+
-                        //         '<h2 class="title">'+
-                        //             '<a class="cat" href="">'+ (item.author || '未知') +
-                        //                 '<i class="icon-arrow"></i>'+
-                        //             '</a>'+
-                        //             '<a class="title-link" href="">'+ item.title + '</a></h2>'+
-                        //         '<div class="meta">'+
-                        //             '<i class="icon-time">'+ item.createdTime +'</i>'+
-                        //             '<i class="icon-user">'+ (item.author || '未知') +'</i>'+
-                        //         '</div>'+
-                        //         '<div class="desc">'+ item.content +'</div>'+
-                        //     '</div>'+
-                        // '</li>'
-                        
-                        liHTML += `<li>
-                            <img class="article-thumbnail flt" src="./images/kgc2.jpg" alt="">
-                            <div class="article-info">
-                                <h2 class="title">
-                                    <a class="cat" href="">
-                                        ${item.author || '未知'}
-                                        <i class="icon-arrow"></i>
-                                    </a>
-                                    <a class="title-link" href="/detail.html?id=${item._id}">${item.title}</a></h2>
-                                <div class="meta">
-                                    <i class="icon-time">${item.author || '未知'}</i>
-                                    <i class="icon-user">${item.createdTime}</i>
-                                </div>
-                                <div class="desc">${item.content}</div>
-                            </div>
-                        </li>`
-                    }
-                    // console.log(liHTML)
-                    $('#listBox').append(liHTML)
+                    renderList(list)
                 }
                 // console.log(res)
                 // debugger
@@ -184,5 +127,97 @@ $(document).ready(function (e) {
     }
 
     getList();
+
+    function renderList(list) {
+        var liHTML = '';
+        for (let i = 0; i < list.length; i++) {
+            var item = list[i];
+            // liHTML += '<li>'+
+            //     '<img class="article-thumbnail flt" src="./images/kgc2.jpg" alt="">'+
+            //     '<div class="article-info">'+
+            //         '<h2 class="title">'+
+            //             '<a class="cat" href="">'+ (item.author || '未知') +
+            //                 '<i class="icon-arrow"></i>'+
+            //             '</a>'+
+            //             '<a class="title-link" href="">'+ item.title + '</a></h2>'+
+            //         '<div class="meta">'+
+            //             '<i class="icon-time">'+ item.createdTime +'</i>'+
+            //             '<i class="icon-user">'+ (item.author || '未知') +'</i>'+
+            //         '</div>'+
+            //         '<div class="desc">'+ item.content +'</div>'+
+            //     '</div>'+
+            // '</li>'
+            
+            liHTML += `<li>
+                <img class="article-thumbnail flt" src="./images/kgc2.jpg" alt="">
+                <div class="article-info">
+                    <h2 class="title">
+                        <a class="cat" href="">
+                            ${item.author || '未知'}
+                            <i class="icon-arrow"></i>
+                        </a>
+                        <a class="title-link" href="/detail.html?id=${item._id}">${item.title}</a></h2>
+                    <div class="meta">
+                        <i class="icon-time">${item.author || '未知'}</i>
+                        <i class="icon-user">${item.createdTime}</i>
+                    </div>
+                    <div class="desc">${item.content}</div>
+                </div>
+            </li>`
+        }
+        // console.log(liHTML)
+        $('#listBox').empty().append(liHTML);
+    }
+
+
+    function onSearch() {
+        // 点击搜索按钮进行搜索
+        $('#btnSearch').on('click', function (ev){
+            getSearch()
+        });
+        // 按回车就搜索
+        $(document).on('keyup', function (ev) {
+            ev.preventDefault();
+            // debugger
+            if (ev.keyCode === 13) {
+                // debugger
+                getSearch()
+            }
+            return;
+        });
+        // 当搜索框清空的时候自动回复正常数据
+        $('#searchBox').on('input', function (ev) {
+            var val = $(this).val();
+            // debugger
+            if (val === '') {
+                // debugger
+                getList();
+            }
+        });
+    }
+
+    function getSearch() {
+        var keyword = $('#searchBox').val();
+        // debugger
+        $.ajax({
+            url: '/api/article/list',
+            type: 'get',
+            data: {
+                value: keyword
+            },
+            success: function (res) {
+                if (res && res.code === 10000) {
+                    var list = res.data.list || [];
+                    console.log(list)
+                    renderList(list)
+                }
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+
+    onSearch();
 
 });
