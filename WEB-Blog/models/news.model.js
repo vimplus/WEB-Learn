@@ -7,6 +7,7 @@ const News = new Schema({
     title: String,
     content: String,
     author: String,
+    img: String,
     createdTime: Number
 });
 

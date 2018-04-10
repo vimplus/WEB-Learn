@@ -2,6 +2,8 @@
 const Koa =  require('koa');
 const Router = require('koa-router');
 const koaBody = require('koa-body');
+const fs = require('fs');
+const path = require('path');
 const staticServer = require('koa-static');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/weblog');
@@ -14,7 +16,7 @@ const port = 8080;
 const News = require('./models/news.model');
 
 // 使用koa-router
-app.use(koaBody());
+app.use(koaBody({ multipart: true }));
 app.use(router.routes()).use(router.allowedMethods());
 // 托管静态文件
 app.use(staticServer(__dirname + '/views'));
@@ -37,6 +39,7 @@ router.post('/api/news/save', async (ctx, next) => {
     const data = {
         title: payload.title,
         content: payload.content,
+        img: payload.img,
         author: payload.author,
         createdTime: Date.now()
     }
@@ -131,6 +134,33 @@ router.post('/api/news/edit', async (ctx, next) => {
         msg: '修改成功！'
     }
     // debugger
+});
+
+router.post('/api/files/upload', async (ctx, next) => {
+    const payload = ctx.request.body;
+    
+    const img = payload.files.img;
+    const readForm = fs.createReadStream(img.path);
+    const savePath = path.join('/upload/', img.name);
+    const saveDir = path.join('./views/', savePath);
+    console.log('-------savePath:', savePath);
+    console.log('-------saveDir:', saveDir);
+
+    const fileStream = fs.createWriteStream(saveDir);
+    console.log('-------fileStream:', fileStream);
+
+    readForm.pipe(fileStream);
+    readForm.on('end' , function (ret) {
+        console.log(ret);
+    })
+
+    ctx.body = {
+        code: 10000,
+        data: {
+            fileUrl: savePath
+        },
+        msg: '上传成功！'
+    }
 });
 
 // 监听服务端口

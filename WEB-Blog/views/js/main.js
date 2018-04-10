@@ -149,7 +149,7 @@ $(document).ready(function (e) {
             // '</li>'
             
             liHTML += `<li>
-                <img class="article-thumbnail flt" src="./images/kgc2.jpg" alt="">
+                <img class="article-thumbnail flt" src="${item.img}" alt="">
                 <div class="article-info">
                     <h2 class="title">
                         <a class="cat" href="">

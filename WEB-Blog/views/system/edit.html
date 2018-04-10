@@ -18,7 +18,11 @@
     <form id="edit-form">
         <div class="input-field">
             <span>标题：</span>
-            <input id="title"/>
+            <input id="title" type="text"/>
+        </div>
+        <div class="input-field">
+            <span>缩略图：</span>
+            <input id="fileBox" type="file">
         </div>
         <div class="input-field">
             <span>内容：</span>
@@ -66,6 +70,30 @@
                 });
             }
 
+            var fileUrl = null;
+
+            $('#fileBox').on('change', function (ev) {
+                var file = ev.target.files[0];
+                var formData = new FormData();
+                formData.append('img', file);
+                debugger
+                $.ajax({
+                    url: '/api/files/upload',
+                    type: 'post',
+                    data: formData,
+                    processData: false, // 告诉jQuery不要去处理发送的数据
+                    contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+                    success: function (res) {
+                        if (res && res.code === 10000) {
+                            fileUrl = res.data.fileUrl;
+                        }
+                    },
+                    error: function (err) {
+                        
+                    }
+                })
+            });
+
             $('#edit-form').on('submit', function(res) {
                 
                 var title = $('#title').val();
@@ -103,6 +131,7 @@
                     data: {
                         title: title,
                         content: content,
+                        img: fileUrl,
                         author: author
                     },
                     dataType: 'json',
