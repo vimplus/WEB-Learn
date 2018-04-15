@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React-Demo</title>
+    <script src="https://cdn.bootcss.com/react/15.3.2/react.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.3.2/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        var App = React.createClass({
+            getInitialState: function () {
+                return {
+                    inputValue: '',
+                    list: []
+                }
+            },
+            // 自己定义了一个函数
+            onInputChange: function (event) {
+                console.log(event.target.value)
+                // var value = this.state.inputValue;
+                // var list = this.state.list;
+                var value = event.target.value;
+                this.setState({
+                    inputValue: value
+                });
+            },
+
+            render: function () {
+                return (
+                    <div>
+                        <input type="text" onChange={this.onInputChange}/>
+                        <p>你当前正在输入的内容是：{this.state.inputValue}</p>
+                    </div>
+                )
+            }
+        })
+
+        ReactDOM.render(
+            <App/>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
