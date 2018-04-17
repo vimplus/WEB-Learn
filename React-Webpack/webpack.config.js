@@ -3,7 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js',
+        vendor: ['react', 'react-dom', 'react-router', 'react-router-dom']
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js'
@@ -24,13 +27,27 @@ module.exports = {
             }
         }]
     },
+    optimization: {
+        runtimeChunk: {
+            name: "manifest"
+        },
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "all"
+                }
+            }
+        }
+    },
     plugins: [
         // new HtmlWebpackHarddiskPlugin(),
         new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
             filename: 'index.html',
             template: './src/views/index.html',     // html模板路径
-            // chunks: ['vendor', 'index']  // manifest: 可以理解为模块清单，载货单
+            chunks: ['vendor', 'index']  // manifest: 可以理解为模块清单，载货单
         })
     ]
 }
