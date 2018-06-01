@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .module-list-content {
+            width: 800px;
+            margin: 0 auto;
+        }
+        .module-table th,
+        .module-table td {
+            padding: 0 15px;
+        }
+        .btn-delete {
+            color: #f00;
+            cursor: pointer;
+        }
+    </style>
+    <title>文章管理</title>
+</head>
+<body>
+    <div class="module-list-content">
+        <table class="module-table">
+            <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="listBox"></tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        function getList() {
+            $.ajax({
+                url: '/api/article/list',
+                type: 'get',
+                success: function (res) {
+                    if (res && res.code === 10000) {
+                        var list = res.data.list || [];
+                        console.log(list)
+                        var liHTML = '';
+                        for (let i = 0; i < list.length; i++) {
+                            var item = list[i];
+                            
+                            liHTML += `<tr>
+                                <td>${item.title}</td>
+                                <td>${item.createdTime}</td>
+                                <td>
+                                    <a href="/system/edit.html?id=${item._id}">编辑</a>
+                                    <span class="btn-delete" data-id="${item._id}">删除</span>
+                                </td>
+                            </tr>`;
+                        }
+                        // console.log(liHTML)
+                        $('#listBox').append(liHTML)
+                    }
+                    // console.log(res)
+                },
+                error: function (err) {
+                    console.error(err)
+                } 
+            })
+        }
+
+        getList();
+
+        function deleteArticle() {
+            $('#listBox').on('click', 'td span', function (res) {
+                var id = $(this).data('id');
+                // debugger
+                $.ajax({
+                    url: `/api/article/${id}`,
+                    type: 'delete',
+                    success: function (res) {
+                        console.log(res)
+                        if (res && res.code === 10000) {
+                            alert(res.msg);
+                            $('#listBox').empty();
+                            getList();
+                        } else {
+                            alert('删除失败!');
+                        }
+                    },
+                    error: function (err) {
+                        console.error(err)
+                    }
+                })
+            })
+        }
+        deleteArticle()
+    </script>
+</body>
+</html>

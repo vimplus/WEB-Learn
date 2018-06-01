@@ -1,0 +1,533 @@
+/*重置样式*/
+
+body, div, p, ul, ol, dl, dt, dd, li, form, input, table, th, td, img, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 12px;
+    font-style: normal;
+    color: #000;
+    font-family: 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial', sans-serif;
+    background: #f6f6f6;
+}
+
+em, b, i {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: #999;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #45B6F7;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+
+/*公共属性*/
+
+.hide {
+    display: none;
+}
+
+.flt {
+    float: left;
+}
+
+.frt {
+    float: right;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+
+/*主要模块*/
+
+.module-header {
+    position: relative;
+    background: #fff;
+}
+
+.module-header, .header-inner {
+    height: 110px;
+    background: #fff;
+}
+
+.header-inner {
+    position: relative;
+    z-index: 5;
+}
+
+.module-body {
+    padding: 20px 0;
+    min-height: 600px;
+}
+
+.module-footer {
+    height: 100px;
+    background: #96c;
+}
+
+.module-content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.module-column-title {
+    height: 22px;
+    margin-bottom: 10px;
+}
+
+.module-column-title h3 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #555;
+}
+
+.module-column-title .more {
+    font-size: 14px;
+}
+
+.module-column-title .more a:hover {
+    text-decoration: none;
+}
+
+.top-menu {
+    height: 50px;
+}
+
+.top-menu-link {
+    float: right;
+}
+
+.top-menu-link li {
+    float: left;
+    padding: 0 15px;
+    font-size: 14px;
+    line-height: 50px;
+}
+
+.header-master {
+    height: 32px;
+}
+
+.header-master .logo {
+    width: 137px;
+    height: 32px;
+}
+
+.header-master .slogan {
+    width: 100px;
+    height: 30px;
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-top: 2px;
+    font-size: 14px;
+    color: #bbb;
+    border-left: 2px solid #eaeaea;
+}
+
+.header-master .slogan p {
+    margin-top: -3px;
+}
+
+.site-navbar {
+    padding-top: 10px;
+}
+
+.site-navbar>ul>li {
+    position: relative;
+    float: left;
+    font-size: 18px;
+    padding: 0 15px;
+}
+
+.site-navbar>ul>li a:hover {
+    text-decoration: none;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 26px;
+    left: -10px;
+    min-width: 150px;
+    padding: 8px.0;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.sub-menu li a {
+    display: block;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 50px 0 20px;
+}
+
+.sub-menu li a:hover {
+    background-color: #f6f6f6;
+}
+
+.site-navbar>ul>li:hover .sub-menu {
+    display: block;
+}
+
+.site-navbar>ul>li.nav-search {
+    padding-top: 3px;
+}
+
+.search-case {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+
+.icon-search {
+    background: url('../images/search_24x24px.png') no-repeat;
+    background-size: 18px 18px;
+}
+
+.icon-search:hover {
+    background: url('../images/search_24x24px_hover.png') no-repeat;
+    background-size: 18px 18px;
+}
+
+.icon-close {
+    background: url('../images/close_24x24px.png') no-repeat;
+    background-size: 18px 18px;
+}
+
+.icon-close:hover {
+    background: url('../images/close_24x24px_hover.png') no-repeat;
+    background-size: 18px 18px;
+}
+
+.site-search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.site-search.search-show {
+    top: 110px;
+    z-index: 2;
+    transition: all ease 0.3s;
+}
+
+.site-search .search-box {
+    padding: 25px 0;
+    text-align: center;
+}
+
+.site-search-form {
+    display: inline-block;
+}
+
+.site-search-form .site-search-input {
+    float: left;
+    width: 612px;
+    height: 50px;
+    padding: 4px 12px;
+    font-size: 16px;
+    color: #999;
+    border: solid 1px #ddd;
+    box-sizing: border-box;
+    border-radius: 2px 0 0 2px;
+    outline: none;
+}
+
+.site-search-form .site-search-input:focus {
+    border-color: #45B6F7;
+}
+
+.site-search-form .site-search-btn {
+    width: 108px;
+    height: 50px;
+    background: #45B6F7;
+    border-radius: 0 2px 2px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.site-search-form .site-search-btn:hover {
+    opacity: 0.85;
+    filter: alpha(opacity=85);
+}
+
+.icon-search-white {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url('../images/search_24x24px_white.png') no-repeat;
+}
+
+
+/* 主体部分 */
+
+.module-main {
+    float: left;
+    width: 820px;
+}
+
+/* banner start */
+.module-banner {
+    height: 200px;
+    background: #45B6F7;
+}
+
+.banner-box {
+    width: 820px;
+    height: 200px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.banner-box .img {
+    width: 5000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.banner-box .img li {
+    float: left;
+}
+
+.banner-box .li {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+}
+
+.banner-box .li li {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.banner-box .but {
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    width: 38px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: '宋体';
+    cursor: pointer;
+    display: none;
+}
+
+.banner-box:hover .but {
+    display: block;
+}
+
+.banner-box .but-left {
+    left: 0;
+}
+
+.banner-box .but-right {
+    right: 0;
+}
+
+.banner-box .li .index {
+    background: #f60;
+    width: 30px;
+    border-radius: 10px;
+}
+
+.banner-box .bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    background-color: hsla(24, 100%, 50%, 0.5);
+}
+
+/* banner end */
+
+.module-ad-large {
+    box-sizing: border-box;
+    height: 140px;
+    padding: 15px 20px;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.module-ad-large .ad-title {
+    font-size: 18px;
+}
+
+.module-ad-large .ad-title .text-red {
+    color: #ff5f52;
+}
+
+.module-ad-large .ad-title a {
+    color: #555;
+}
+
+.module-ad-large .ad-title a:hover {
+    color: #45B6F7;
+}
+
+.module-ad-large .ad-desc {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #666;
+    text-indent: 28px;
+}
+
+.module-article-list {
+    min-height: 600px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+}
+
+.list-box li {
+    box-sizing: border-box;
+    height: 192px;
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.list-box li .article-thumbnail {
+    width: 220px;
+    height: 150px;
+}
+
+.article-info {
+    position: relative;
+    margin-left: 235px;
+    color: #999;
+}
+
+.article-info .title {
+    margin-bottom: 10px;
+}
+
+.article-info .title a:hover {
+    text-decoration: none;
+}
+
+.article-info .title .cat {
+    display: inline-block;
+    padding: 3px 6px;
+    font-size: 12px;
+    color: #fff;
+    background: #45BCF9;
+}
+
+.article-info .title .title-link {
+    margin-left: 5px;
+    color: #555;
+}
+
+.article-info .title .title-link:hover {
+    color: #45B6F7;
+}
+
+.article-info .meta {
+    line-height: 30px;
+}
+
+.article-info .meta .author {
+    margin-left: 20px;
+}
+
+.article-info .desc {
+    padding: 5px 0;
+    line-height: 20px;
+}
+
+.meta span {
+    line-height: 18px;
+}
+
+.meta i {
+    position: relative;
+    padding-left: 15px;
+    margin-right: 15px;
+}
+
+.meta i::before {
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    content: '';
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+.meta .icon-time::before {
+    background: url('../images/time_16x16px.png') no-repeat;
+    background-size: 12px 12px;
+}
+
+.meta .icon-user::before {
+    background: url('../images/user_16x16px.png') no-repeat;
+    background-size: 10px 12px;
+}
+
+.module-sidebar {
+    float: right;
+    width: 360px;
+    min-height: 900px;
+    background: rgb(255, 139, 139);
+}

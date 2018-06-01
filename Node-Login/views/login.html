@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/master.css">
+    <title>登录页</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/libs/storage.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="content">
+            <h2>登录</h2>
+            <form class="module-form" id="formRegister">
+                <div class="input-field">
+                    <label class="input-label">用户名</label><input class="input-area large" id="username" name="username" type="text" value="" placeholder="请输入用户名">
+                </div>
+                <div class="input-field">
+                    <label class="input-label">密码</label><input class="input-area large" id="password" name="password" type="password" placeholder="请输入密码">
+                </div>
+                <div class="btn-mode">
+                    <button class="btn btn-primary" type="submit" name="button">登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $('#formRegister').on('submit', function (event) {
+            var username = $('#username').val();
+            var password = $('#password').val();
+            $.ajax({
+                url: '/api/user/login',
+                type: 'post',
+                data: {
+                    username: username,
+                    password: password
+                },
+                success: function (res) {
+                    if (res && res.code === 10000) {
+                        var token = res.data.token;
+                        Storage.setCookie('token', token);
+                        Storage.setCookie('userInfo', JSON.stringify(res.data));
+                        window.location.href = '/user-center.html';
+                    }
+                    // debugger
+                },
+                error: function (err) {
+
+                }
+            })
+            return false;
+        })
+    </script>
+</body>
+</html>
