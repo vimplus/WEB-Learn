@@ -35,47 +35,57 @@
         </div>
         <div class="module-body">
             <div class="module-banner-bg">
-                <div class="module-content module-banner-wrap">
-                    <div class="module-banner"></div>
-                    <div class="module-hot-course">
-                        <div class="md-hot-title flt">
-                            <h2>热门专业</h2>
-                            <a class="md-hot-more">查看更多</a>
-                        </div>
-                        <div class="md-hot-card frt">
-                            <div class="md-hot-tab">
-                                <a class="md-hot-link" href="/case/ui.html">
-                                    <i class="icon-course course-ui flt"></i>
-                                    <div class="md-link-title flt">
-                                        <h4>UI设计</h4>
-                                        <h5>迎娶or成为白富美班</h5>
-                                    </div>
-                                    <div class="link-line"></div>
-                                </a>
-                                <a class="md-hot-link" href="/case/ui.html">
-                                    <i class="icon-course course-ui flt"></i>
-                                    <div class="md-link-title flt">
-                                        <h4>UI设计</h4>
-                                        <h5>迎娶or成为白富美班</h5>
-                                    </div>
-                                    <div class="link-line"></div>
-                                </a>
-                                <a class="md-hot-link" href="/case/ui.html">
-                                    <i class="icon-course course-ui flt"></i>
-                                    <div class="md-link-title flt">
-                                        <h4>UI设计</h4>
-                                        <h5>迎娶or成为白富美班</h5>
-                                    </div>
-                                    <div class="link-line"></div>
-                                </a>
-                                <a class="md-hot-link" href="/case/ui.html">
-                                    <i class="icon-course course-ui flt"></i>
-                                    <div class="md-link-title flt">
-                                        <h4>UI设计</h4>
-                                        <h5>迎娶or成为白富美班</h5>
-                                    </div>
-                                    <div class="link-line"></div>
-                                </a>
+                <div class="module-content">
+                    <div class="module-banner-wrap">
+                        <div class="module-banner">
+                            <div id="slider">
+                                <a href="#"><img src="images/a1.jpg"/></a>
+                                <a href="#"><img src="images/a2.jpg"/></a>
+                                <a href="#"><img src="images/a3.png"/></a>
+                                <a href="#"><img src="images/a4.png"/></a>
+                            </div>
+                        </div>  
+                        
+                        <div class="module-hot-course">
+                            <div class="md-hot-title flt">
+                                <h2>热门专业</h2>
+                                <a class="md-hot-more">查看更多</a>
+                            </div>
+                            <div class="md-hot-card frt">
+                                <div class="md-hot-tab">
+                                    <a class="md-hot-link" href="/case/ui.html">
+                                        <i class="icon-course course-ui flt"></i>
+                                        <div class="md-link-title flt">
+                                            <h4>UI设计</h4>
+                                            <h5>迎娶or成为白富美班</h5>
+                                        </div>
+                                        <div class="link-line"></div>
+                                    </a>
+                                    <a class="md-hot-link" href="/case/ui.html">
+                                        <i class="icon-course course-ui flt"></i>
+                                        <div class="md-link-title flt">
+                                            <h4>UI设计</h4>
+                                            <h5>迎娶or成为白富美班</h5>
+                                        </div>
+                                        <div class="link-line"></div>
+                                    </a>
+                                    <a class="md-hot-link" href="/case/ui.html">
+                                        <i class="icon-course course-ui flt"></i>
+                                        <div class="md-link-title flt">
+                                            <h4>UI设计</h4>
+                                            <h5>迎娶or成为白富美班</h5>
+                                        </div>
+                                        <div class="link-line"></div>
+                                    </a>
+                                    <a class="md-hot-link" href="/case/ui.html">
+                                        <i class="icon-course course-ui flt"></i>
+                                        <div class="md-link-title flt">
+                                            <h4>UI设计</h4>
+                                            <h5>迎娶or成为白富美班</h5>
+                                        </div>
+                                        <div class="link-line"></div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,5 +94,30 @@
         </div>
         <div class="module-footer"></div>
     </div>
+    <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/vmc.slider.full.min.js"></script>
+    <script type="text/javascript">
+		$(function() {
+			$('#slider').vmcSlider({
+				width: 1200,
+				height: 430,
+				gridCol: 10,
+				gridRow: 5,
+				gridVertical: 20,
+				gridHorizontal: 10,
+				autoPlay: true,
+				ascending: true,
+				effects: [
+					'fade', 'fadeLeft', 'fadeRight', 'fadeTop', 'fadeBottom', 'fadeTopLeft', 'fadeBottomRight',
+					'blindsLeft', 'blindsRight', 'blindsTop', 'blindsBottom', 'blindsTopLeft', 'blindsBottomRight',
+					'curtainLeft', 'curtainRight', 'interlaceLeft', 'interlaceRight', 'mosaic', 'bomb', 'fumes'
+				],
+				ie6Tidy: false,
+				random: false,
+				duration: 2000,
+				speed: 900
+			});
+		});
+	</script>
 </body>
 </html>
