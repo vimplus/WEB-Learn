@@ -119,6 +119,10 @@ h5 {
     
 }
 
+.header-logo {
+    height: 70px;
+}
+
 .header-login li {
     float: left;
 }
