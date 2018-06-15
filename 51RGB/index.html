@@ -148,7 +148,8 @@
             $('#loginLink').on('click', function (event) {
                 $('.module-shade').removeClass('hide');
             });
-            $('.module-shade, .modal-close').on('click', function (event) {
+            $('.modal-close').on('click', function (event) {
+                event.stopPropagation();
                 $('.module-shade').addClass('hide');
             });
 		});

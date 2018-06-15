@@ -183,6 +183,8 @@ h5 {
 }
 
 .module-modal-login {
+    position: relative;
+    z-index: 1000;
     width: 500px;
     margin: 250px auto 0;
     min-height: 300px;
