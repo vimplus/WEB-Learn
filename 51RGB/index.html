@@ -24,8 +24,8 @@
                     <li><a href="">关于</a></li>
                 </ul>
                 <ul class="header-login frt">
-                    <li><a href="javascript:;">登录</a></li>
-                    <li><a href="javascript:;">注册</a></li>
+                    <li><a id="loginLink" href="javascript:;">登录</a></li>
+                    <li><a id="registerLink" href="javascript:;">注册</a></li>
                 </ul>
                 <form class="header-search frt">
                     <input class="input-search" placeholder="请输入搜索内容"/>
@@ -94,10 +94,36 @@
         </div>
         <div class="module-footer"></div>
     </div>
+    <!-- login start -->
+    <div class="module-shade hide">
+        <div class="module-modal-login">
+            <div class="module-modal-header">
+                <h2 class="modal-title flt">登录</h2>
+                <i class="modal-close iconfont icon-close frt"></i>
+            </div>
+            <div class="module-modal-body">
+                <form class="form-login">
+                    <div class="input-field">
+                        <label class="input-label">用户名：</label>
+                        <input class="input-case middle" type="text" placeholder="请输入用户名">
+                    </div>
+                    <div class="input-field">
+                        <label class="input-label">密码：</label>
+                        <input class="input-case middle" type="password" placeholder="请输入密码">
+                    </div>
+                    <div class="btn-box-login">
+                        <button class="btn btn-primary">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     <!-- login end -->
     <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/vmc.slider.full.min.js"></script>
     <script type="text/javascript">
 		$(function() {
+            // banner
 			$('#slider').vmcSlider({
 				width: 1200,
 				height: 430,
@@ -117,6 +143,14 @@
 				duration: 2000,
 				speed: 900
 			});
+
+            // login
+            $('#loginLink').on('click', function (event) {
+                $('.module-shade').removeClass('hide');
+            });
+            $('.module-shade, .modal-close').on('click', function (event) {
+                $('.module-shade').addClass('hide');
+            });
 		});
 	</script>
 </body>
