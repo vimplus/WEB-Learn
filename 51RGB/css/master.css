@@ -89,6 +89,8 @@ h5 {
 
 .module-header {
     height: 70px;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 1px 1px #ccc;
 }
 
 .module-header .header-inner {
@@ -480,6 +482,75 @@ h5 {
 
 .course-ui {
     background-position: 0 0;
+}
+
+
+/* article list */
+.module-side {
+    width: 220px;
+    min-height: 300px;
+    background: #08c;
+}
+
+.module-article-list {
+    width: 950px;
+    min-height: 600px;
+}
+
+.module-column-title {
+    margin-top: 40px;
+    font-size: 36px;
+    font-weight: normal;
+}
+
+.md-list-box {
+    padding: 5px 0;
+    margin-top: 20px;
+   
+}
+
+.list-item {
+    margin-bottom: 50px;
+}
+
+.list-item .item-text {
+    width: 700px;
+}
+
+.list-item .item-title {
+    font-weight: normal;
+}
+
+.list-item .item-title a {
+    font-size: 20px;
+    line-height: 44px;
+    color: #107dd5;
+}
+
+
+.list-item .item-desc {
+    padding: 5px 0;
+    font-size: 14px;
+    line-height: 24px;
+    color: #333;
+}
+
+
+.list-item .item-meta {
+    font-size: 12px;
+    line-height: 18px;
+    color: #999;
+}
+
+.list-item .item-img {
+    width: 200px;
+    height: 110px;
+    margin-top: 10px;
+}
+
+.list-item .item-img img {
+    width: 100%;
+    height: 100%;
 }
 
 .module-footer {
