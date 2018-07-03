@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        html, body, div {
+            padding: 0;
+            margin: 0;
+        }
+        .box {
+            width: 1200px;
+            height: 720px;
+            margin: 0 auto;
+            background: #08c;
+        }
+        @media screen and (max-width:1024px) {
+            .box {
+                width: 980px;
+                background: #f40;
+            }
+        }
+
+        @media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+            .box {
+                width: 375px;
+                background: #6c0;
+            }
+        }
+    </style>
+    <title>Media-query</title>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+</body>
+</html>

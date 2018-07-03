@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+    <style>
+        .flex-box {
+            display: flex;
+            width: 900px;
+            height: 300px;
+            padding: 10px;
+            background: #09c;
+            /* flex-direction: column-reverse; */
+            /* flex-wrap:nowrap; */
+            /* justify-content:space-around; */
+            /* align-items:flex-end; */
+            align-content:center;
+        }
+
+        .flex-item {
+            flex: 1 1 100px;
+            /* flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 100px; */
+            height: 100px;
+            margin: 5px;
+            text-align: center;
+            line-height: 100px;
+            background: rgb(175, 215, 255);
+        }
+        /* .flex-item:nth-child(1) {
+            order: 2;
+        }
+        .flex-item:nth-child(2) {
+            order: 3;
+        }
+        .flex-item:nth-child(3) {
+            order: 5;
+        }
+        .flex-item:nth-child(10) {
+            order: 0;
+        } */
+        .flex-item:nth-child(2) {
+            align-self: flex-end;
+        }
+        .flex-item:nth-child(4) {
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-box">
+        <div class="flex-item">子项目01</div>
+        <div class="flex-item">子项目02</div>
+        <div class="flex-item">子项目03</div>
+        <div class="flex-item">子项目04</div>
+        <div class="flex-item">子项目05</div>
+        <div class="flex-item">子项目06</div>
+    </div>
+</body>
+</html>
