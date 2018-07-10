@@ -1,0 +1,74 @@
+/* reset style */
+body, div, p, ul, ol, dl, dt, dd, li, form, input, table, th, td, img, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 12px;
+    font-style: normal;
+    color: #000;
+    font-family: 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial', sans-serif;
+    background: #fff;
+}
+
+em, b, i {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: #777;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #188eee;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+
+.hide {
+    display: none;
+}
+
+
+/* main layout */
+.tpp-header {
+    height: 10.1vw;
+    background: #188eee;
+}
+
+.tpp-banner {
+    height: 150px;
+    background: #d5b1ff;
+}
+
+.tpp-menu-wrap {
+    z-index: 999;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff linear-gradient(180deg,#ededed,#ededed 50%,transparent 0,transparent 0) 0 0 repeat-x;
+    background-size: 100% 1px;
+    background-color: hsla(0,0%,100%,.98);
+}
+
+.tpp-menu {
+    box-sizing: border-box;
+    height: 13.1vw;
+    padding-top: 1.9vw;
+}
