@@ -48,7 +48,8 @@ table {
 /* main layout */
 .tpp-header {
     height: 10.1vw;
-    background: #188eee;
+    line-height: 2.375rem;
+    line-height: 10.1vw;
 }
 
 .tpp-banner {
@@ -71,4 +72,66 @@ table {
     box-sizing: border-box;
     height: 13.1vw;
     padding-top: 1.9vw;
+}
+
+.city-c {
+    display: inline-block;
+    width: 42%;
+}
+
+.city-c {
+    height: 10.1vw;
+    line-height: 2.375rem;
+    line-height: 10.1vw;
+}
+
+.m-tab-wrap {
+    display: inline-block;
+}
+
+.m-tab-wrap ul {
+    position: relative;
+    overflow: hidden;
+}
+
+.m-tab-wrap ul li {
+    float: left;
+    padding: 0 .9375rem;
+    padding: 0 4vw;
+}
+
+.m-tab-wrap ul li .item-content {
+    height: 2.375rem;
+    height: 10.1vw;
+    font-size: .875rem;
+    color: #777;
+    text-align: center;
+}
+
+.m-tab-wrap ul .active .item-content {
+    color: #ff4d64;
+}
+
+.m-tab-wrap ul li.tab-ink-bar {
+    padding: 0;
+    margin: 0;
+    height: 3px;
+    background: #ff4d64;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: transform .3s cubic-bezier(.645,.045,.355,1), -webkit-transform .3s cubic-bezier(.645,.045,.355,1);
+    transform-origin: 0 0;
+}
+
+.tpp-tab-panel {
+    min-height: 500px;
+}
+
+.tpp-tab-panel.publish {
+    background: #6fda4e;
+}
+
+.tpp-tab-panel.presell {
+    background: #4dd5ff;
 }

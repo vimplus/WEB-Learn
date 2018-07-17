@@ -6,19 +6,30 @@
     <link rel="apple-touch-icon" href="https://f.m.taopiaopiao.com/img/favicon.ico">
     <link rel="Shortcut Icon" href="https://f.m.taopiaopiao.com/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/master.css">
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="js/main.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>淘票票</title>
 </head>
 <body>
     <div class="wrap">
-        <header class="tpp-header"></header>
-        <section class="tpp-tab-panel">
+        <header class="tpp-header">
+            <div class="city-c"></div>
+            <div class="m-tab-wrap" id="J_movieTab">
+                <ul>
+                    <li class="tab-item active" data-index="0" aria-selected="true"><div class="item-content">正在热映</div></li>
+                    <li class="tab-item" data-index="1" aria-selected="false"><div class="item-content">即将上映</div></li>
+                    <li class="tab-ink-bar"></li>
+                </ul>
+            </div>
+        </header>
+        <section class="tpp-tab-panel publish" data-panel="0">
             <div class="tpp-banner"></div>
             <div class="tpp-movie-list">
-                
+
             </div>
-        </ssection>
-        <section class="tpp-tab-panel hide"></section>
+        </section>
+        <section class="tpp-tab-panel presell hide" data-panel="1"></section>
         <nav class="tpp-menu-wrap">
             <div class="tpp-menu">
                 <a class="tpp-menu-item">
