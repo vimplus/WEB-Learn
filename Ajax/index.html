@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XMLHttp</title>
+</head>
+<body>
+    <div id="contentBox"></div>
+
+    <script>
+        function loadXMLDoc(params) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open('GET', 'content.txt', true);
+            xmlHttp.send();
+
+            xmlHttp.onreadystatechange = function (res) {
+                if (xmlHttp.readyState == XMLHttpRequest.DONE) {
+                    if (xmlHttp.status == 200) {
+                        // callback
+                        document.getElementById("contentBox").innerHTML = xmlHttp.responseText;
+                    } else if (xmlHttp.status == 400) {
+                        alert('There was an error 400');
+                    } else {
+                        alert('something else other than 200 was returned');
+                    }
+                }
+            }
+        }
+        loadXMLDoc();
+    </script>
+</body>
+</html>

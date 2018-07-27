@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax</title>
+</head>
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr><th>商品名称</th><th>SKU条码</th><th>单价</th></tr>
+            </thead>
+            <tbody id="listBox">
+                <!-- <tr><td>锅贴</td><td>P23564545756</td><td>6.00</td></tr> -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url: 'goods.json',
+            type: 'GET',
+            success: function (res) {
+                if (res && res.code === 10000) {
+                    var list = res.data && res.data.list;
+                    renderList(list);
+                }
+            },
+            error: function (err) {
+                console.error(err);
+            }
+        });
+
+        function renderList(list) {
+            var tr = '';
+            for (var i = 0; i < list.length; i++) {
+                var item = list[i];
+                // tr += '<tr><td>'+ item.name +'</td><td>'+ item.sku +'</td><td>'+ (item.price / 100).toFixed(2) +'</td></tr>'
+                tr += `<tr><td>${item.name}</td><td>${item.sku}</td><td>${(item.price / 100).toFixed(2)}</td></tr>`;
+            }
+            $('#listBox').append(tr);
+        }
+    </script>
+</body>
+</html>
