@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript-进阶01</title>
+</head>
+<body>
+    <script>
+        function Dog() {
+            
+        }
+
+        // function GirlFriend(params) {
+            
+        // }
+        // var gf = new GirlFriend();
+
+        Dog.prototype.foot = 4;
+
+
+        var husky = new Dog();
+        husky.eat = 'fish';
+        var teddy = new Dog();
+        teddy.eat = '骨头';
+        console.log('----husky:', husky);
+        console.log('----husky:', husky.foot);
+        console.log('----teddy:', teddy);
+        console.log('----teddy:', teddy.foot);
+
+        function Person() {
+        
+        }
+
+        Person.prototype.name = 'txboy';
+        var personA = new Person();
+        var personB = new Person();
+        console.log(personA.name);	// txboy
+        console.log(personB.name);	// txboy
+
+        Object();
+        Array();
+
+
+    </script>
+</body>
+</html>
