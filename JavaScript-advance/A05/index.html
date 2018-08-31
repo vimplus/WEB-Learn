@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arrA = [1, 2, 1, '1', 3, 2, 4, 2];
+
+        // function unique(arr) {
+        //     var res = [];
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (res.indexOf(arr[i]) === -1) {
+        //             res.push(arr[i])
+        //         }
+        //     }
+        //     return res;
+        // }
+
+        // var unArr = unique(arrA);
+        // console.log(unArr);
+
+
+        function uniqueB(arr) {
+            var sArr = arr.concat().sort();
+            var fn = function (current, i, array) {
+                var x = !i || current !== array[i-1];
+                return x;
+            }
+            var res = sArr.filter(fn);
+            return res;
+        }
+
+        var unArrB = uniqueB(arrA)
+
+
+        var arr = [3,2,'2',3,5,6,8,3,5,2,{value: 1}, {value: 1}, {value: 2}, {}, {}, [],[]];
+        function unique(arr) {
+            var tmp = [];
+            var hash = {};
+            for (var i = 0; i < arr.length; i++) {
+                var key = typeof(arr[i]) + JSON.stringify(arr[i]);
+                debugger
+                if(hash[key] !== 1) {
+                    tmp.push(arr[i])
+                    hash[key] = 1;
+                    debugger
+                }
+            }
+            return tmp;
+        }
+
+        var unArr = unique(arr);
+        console.log(unArr);
+    </script>
+</body>
+</html>
