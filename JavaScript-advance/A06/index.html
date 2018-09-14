@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript 类型判断</title>
+</head>
+<body>
+    <script>
+        function checkBaseType(value) {
+            if (typeof value === 'number') {
+                console.log('-----The value of type is Number.');
+            } else if (typeof value === 'string') {
+                console.log('-----这个变量value的类型是字符串.');
+            } else {
+                console.log('-----这个变量是其他类型.')
+            }
+        }
+
+        checkBaseType(1);
+        checkBaseType('666');
+        checkBaseType([1, 2, 3]);
+
+        function checkObjectType(value) {
+            if (value instanceof Array) {
+                console.log('-----这个变量value的类型是数组.');
+            } else if (value instanceof Object) {
+                console.log('-----这个变量value的类型是对象.');
+            } else {
+                console.log('-----这个变量是其他类型.')
+            }
+        }
+
+        checkObjectType([1, 2, 3]);
+        checkObjectType({});
+
+
+        function checkTypeByToString(value) {
+            if (Object.prototype.toString.call(value) === '[object Array]') {
+                console.log('-----这个变量value的类型是数组.');
+            } else if (Object.prototype.toString.call(value) === '[object null]') {
+                console.log('-----这个变量value的类型是null.');
+            } else {
+                console.log('-----这个变量是其他类型.')
+            }
+        }
+
+        checkTypeByToString([1, 2, 3]);
+        checkTypeByToString(null);
+
+
+        (function f(f) {
+            return typeof f();
+        })( function () {return 1;} );
+
+        
+        var x = [typeof x, typeof y][0];
+        console.log(typeof typeof x);
+    </script>
+</body>
+</html>
