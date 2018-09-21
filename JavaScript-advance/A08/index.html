@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6</title>
+</head>
+<body>
+    <script>
+        const PLUS = 'plus';
+        const obj = {name: '密室'};
+        obj.name = 'MC2';
+        obj.age = 18;
+
+        // let x = null;
+        var y = 2;
+        if (PLUS) {
+            const z = 'zzz';
+            let x = 2;
+            console.log('------x:', x);
+        }
+
+        // console.log('------z:', z);
+        console.log('------obj.name:', obj.name);
+
+
+        const user = 'world';
+        console.log(`hello ${user}`);  // hello world
+
+        const firstName = '李';
+        const order = 666;
+        const event = 'eat';
+
+        const content = `
+            Hello ${firstName},
+            Thanks for ordering ${order} tickets to ${event}.
+        `;
+
+        console.log('------content:', content);
+
+
+        // function log(user) {
+        //     user = user || 'World';
+        //     console.log(user);
+        // }
+        function log(user = 'World') {
+            console.log(user);
+        }
+        log() //  World
+        log('WWW');
+
+
+        function fn(params) {
+            
+        }
+
+        // var foo = (x) => {
+        //     console.log('------this:', this.name);
+        //     console.log('-----foo x:', x)
+        // }
+
+        const data = {
+            name: 'data',
+            fn: function (y) {
+                console.log('------this:', this.name);
+                const foo = (x) => {
+                    console.log('------this:', this.name);
+                    console.log('-----foo x:', x)
+                }
+                foo(y);
+            }
+        }
+
+        data.fn('xxxxxxxx666666');
+
+        [1, 2, 3].forEach(function (item) {
+            console.log('item:', item);
+        })
+    </script>
+</body>
+</html>
