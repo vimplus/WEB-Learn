@@ -1,8 +1,24 @@
 const Koa = require('koa');
 const KoaRouter = require('koa-router');
+
+const mongoose = require('mongoose');
+
 const app = new Koa();
 const router = new KoaRouter();
 
+mongoose.connect('mongodb://127.0.0.1:27017/rgbweb');
+
+
+const Schema = mongoose.Schema;
+const ArticleSchema = new Schema({
+  author: String,
+  title: String,
+  body: String,
+  date: Number
+});
+
+
+const ArticleModel = mongoose.model('sys_article', ArticleSchema);
 
 // app.use(ctx => {
 //     ctx.body = '<h1>hello</h1>';
@@ -28,6 +44,15 @@ router.get('/page/content', (ctx, next) => {
             msg: `${params.name}同学，你还是未成年！`
         };
     }
+});
+
+router.get('/api/article/add', async (ctx, next) => {
+    const params = ctx.query;
+    const doc = await ArticleModel.create(params);
+
+    ctx.body = {
+        data: doc
+    };
 });
 
 router.post('/api/getList', (ctx, next) => {
