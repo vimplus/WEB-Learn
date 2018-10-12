@@ -1,5 +1,7 @@
 const Koa = require('koa');
 const KoaRouter = require('koa-router');
+const koaBody = require('koa-body');
+const staticServer = require('koa-static');
 
 const mongoose = require('mongoose');
 
@@ -17,18 +19,28 @@ const ArticleSchema = new Schema({
   date: Number
 });
 
+const UserSchema = new Schema({
+    username: String,
+    password: String
+});
 
-const ArticleModel = mongoose.model('sys_article', ArticleSchema);
+
+const ArticleModel = mongoose.model('sys_articles', ArticleSchema);
+const UserModel = mongoose.model('sys_users', UserSchema);
 
 // app.use(ctx => {
 //     ctx.body = '<h1>hello</h1>';
 // });
 
+app.use(koaBody());
 app.use(router.routes()).use(router.allowedMethods());
 
-router.get('/', (ctx, next) => {
-    ctx.body = '<h1>hello world.</h1>';
-});
+console.log('__dirname:', __dirname);
+app.use(staticServer(__dirname + '/views'));
+
+// router.get('/', (ctx, next) => {
+//     ctx.body = '<h1>hello world.</h1>';
+// });
 
 router.get('/page/content', (ctx, next) => {
     const params = ctx.query;
@@ -53,6 +65,26 @@ router.get('/api/article/add', async (ctx, next) => {
     ctx.body = {
         data: doc
     };
+});
+
+router.post('/api/user/register', async (ctx, next) => {
+    const params = ctx.request.body;
+    console.log('------params:', params);
+    const doc = await UserModel.create(params);
+
+    if (doc) {
+        ctx.body = {
+            code: 10000,
+            data: doc,
+            msg: '注册成功！'
+        };
+    } else {
+        ctx.body = {
+            code: 99999,
+            data: null,
+            msg: '注册失败！'
+        };
+    }
 });
 
 router.post('/api/getList', (ctx, next) => {
