@@ -73,6 +73,37 @@ $(document).ready(function(){
 	})
 
 
+	$('#loginBtn').on('click', function (event) {
+		var username = $('#username').val();
+		var password = $('#password').val();
+
+		$.ajax({
+			type: 'post',
+			url: '/api/user/login',
+			data: {
+				username: username,
+				password: password
+			},
+			success: function (res) {
+				console.log('-----res:', res);
+				if (res && res.code === 10000) {
+					// location.href = '/';
+					Storage.setCookie('token', res.data.token);
+
+				} else if (res && res.code === 80001) {
+					alert('密码错误！')
+				}
+				// else if (res && res.code === 88888) {
+				// 	location.href = '/login.html'
+				// }
+			},
+			error: function (err) {
+				console.log('-----err:', err);
+			}
+		})
+	})
+
+
 })
 
 

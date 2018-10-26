@@ -2,6 +2,7 @@ const Koa = require('koa');
 const KoaRouter = require('koa-router');
 const koaBody = require('koa-body');
 const staticServer = require('koa-static');
+const jwt = require('jsonwebtoken');
 
 const mongoose = require('mongoose');
 
@@ -9,6 +10,8 @@ const app = new Koa();
 const router = new KoaRouter();
 
 mongoose.connect('mongodb://127.0.0.1:27017/rgbweb');
+
+const key = '51RGB';
 
 
 const Schema = mongoose.Schema;
@@ -42,7 +45,7 @@ app.use(staticServer(__dirname + '/views'));
 //     ctx.body = '<h1>hello world.</h1>';
 // });
 
-router.get('/page/content', (ctx, next) => {
+router.get('/page/content', verifyToken, (ctx, next) => {
     const params = ctx.query;
     console.log('------ctx：', ctx)
     console.log('------ctx.query：', ctx.query)
@@ -58,7 +61,7 @@ router.get('/page/content', (ctx, next) => {
     }
 });
 
-router.get('/api/article/add', async (ctx, next) => {
+router.get('/api/article/add', verifyToken, async (ctx, next) => {
     const params = ctx.query;
     const doc = await ArticleModel.create(params);
 
@@ -87,10 +90,67 @@ router.post('/api/user/register', async (ctx, next) => {
     }
 });
 
-router.post('/api/getList', (ctx, next) => {
+
+router.post('/api/user/login', async (ctx, next) => {
+    const params = ctx.request.body;
+    console.log('------params:', params);
+    const userInfo = await UserModel.findOne({
+        username: params.username
+    });
+    if (userInfo && userInfo.password === params.password) {
+
+        const token = jwt.sign({ username: userInfo.username }, key);
+        ctx.body = {
+            code: 10000,
+            data: {
+                username: userInfo.username,
+                token: token
+            },
+            msg: '登录成功！'
+        };
+    } else {
+        ctx.body = {
+            code: 80001,
+            data: null,
+            msg: '用户名或密码错误！'
+        };
+    }
+});
+
+function verifyToken(ctx, next) {
+    const token = ctx.cookies.get('token');
+    console.log('----------token:', token)
+
+    try {
+        var decoded = jwt.verify(token, key);
+        console.log('---------decoded:', decoded)
+
+        next();
+
+    } catch (error) {
+        console.log('----------error msg:', error.message)
+        switch (error.message) {
+            case 'invalid token':
+                ctx.body = {
+                    code: 88888,
+                    data: null,
+                    msg: 'invalid token! 请检查token！'
+                };
+                break;
+        
+            default:
+
+                break;
+        }
+    }
+}
+
+router.get('/api/getList', verifyToken, (ctx, next) => {
+
     ctx.body = {
         list: ['mishi', 'mc2']
     };
+    
 });
   
 app.listen(3000, () => {
