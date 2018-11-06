@@ -24,7 +24,8 @@ const ArticleSchema = new Schema({
 
 const UserSchema = new Schema({
     username: String,
-    password: String
+    password: String,
+    age: Number
 });
 
 
@@ -117,7 +118,7 @@ router.post('/api/user/login', async (ctx, next) => {
     }
 });
 
-function verifyToken(ctx, next) {
+async function verifyToken(ctx, next) {
     const token = ctx.cookies.get('token');
     console.log('----------token:', token)
 
@@ -125,7 +126,7 @@ function verifyToken(ctx, next) {
         var decoded = jwt.verify(token, key);
         console.log('---------decoded:', decoded)
 
-        next();
+        await next();
 
     } catch (error) {
         console.log('----------error msg:', error.message)
@@ -145,12 +146,117 @@ function verifyToken(ctx, next) {
     }
 }
 
-router.get('/api/getList', verifyToken, (ctx, next) => {
+router.get('/api/user/getList', verifyToken, async (ctx, next) => {
 
-    ctx.body = {
-        list: ['mishi', 'mc2']
-    };
+    const params = ctx.query;
+    const page = params.page && Number(params.page) || 1;
+    const size = params.size && Number(params.size) || 10;
+
+    // const userList = await UserModel.find({}, null, {
+    //     skip: (page * size) - size,
+    //     limit: size
+    // });
+
+    const userList = await UserModel.find({}).skip((page * size) - size).limit(size);
+    // console.log('---------userList:', userList);
+
+    if (userList && userList.length > 0) {
+        const list = userList.map(item => {
+            return {
+                id: item._id,
+                username: item.username
+            }
+        });
+        ctx.body = {
+            code: 10000,
+            data: {
+                list: list
+            },
+            msg: '请求成功！'
+        };
+    } else {
+        ctx.body = {
+            code: 99999,
+            data: null,
+            msg: '请求错误！'
+        };
+    }
     
+});
+
+
+router.post('/api/user/delete', async (ctx, next) => {
+    const params = ctx.request.body;
+    const userId = params.userId;
+    const ret = await UserModel.findOneAndDelete({ _id: userId });
+    console.log('-------ret:', ret);
+    if (ret) {
+        ctx.body = {
+            code: 10000,
+            data: null,
+            msg: '删除成功！'
+        };
+    } else {
+        ctx.body = {
+            code: 99999,
+            data: null,
+            msg: '请求错误！'
+        };
+    }
+});
+
+router.get('/api/user/userInfo', verifyToken, async (ctx, next) => {
+
+    const params = ctx.query;
+    const userId = params.userId;
+
+    const userInfo = await UserModel.findOne({_id: userId });
+    // console.log('---------userList:', userList);
+    const resData = {
+        id: userInfo._id,
+        username: userInfo.username,
+        age: userInfo.age
+    }
+
+    if (userInfo) {
+        ctx.body = {
+            code: 10000,
+            data: resData,
+            msg: '请求成功！'
+        };
+    } else {
+        ctx.body = {
+            code: 99999,
+            data: null,
+            msg: '请求错误！'
+        };
+    }
+    
+});
+
+router.post('/api/user/updateInfo', async (ctx, next) => {
+    const params = ctx.request.body;
+    const userId = params.userId;
+    const age = params.age;
+    console.log('------age:', age)
+
+    const ret = await UserModel.findOneAndUpdate({ _id: userId }, {
+        age: age
+    }, { new: true });
+    console.log('-------update ret:', ret);
+    if (ret) {
+        ctx.body = {
+            code: 10000,
+            data: null,
+            msg: '修改成功！'
+        };
+    } else {
+        ctx.body = {
+            code: 99999,
+            data: null,
+            msg: '请求错误！'
+        };
+    }
 });
   
 app.listen(3000, () => {
