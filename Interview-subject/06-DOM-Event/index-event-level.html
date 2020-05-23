@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button id="btn" onclick="log()" type="button">按钮</button> -->
+    <button id="btn" type="button">按钮</button>
+    <a href="http://www.baidu.com/" id="a">click</a>
+    <script>
+        // function log() {
+        //     console.log('Hello world');
+        // }
+
+        var btn = document.getElementById('btn');
+        // btn.onclick = function () {
+        //     console.log('Hello world!');
+        // }
+
+        // btn.addEventListener('click', function (event) {
+        //     console.log('Hello world!');
+        // });
+
+        var obj = {
+            handleEvent: (event) => console.log(event)
+        }
+
+        btn.addEventListener('click', obj, false);
+
+        var a = document.getElementById('a');
+        a.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            console.log('this a tag');
+        }, false);
+    </script>
+</body>
+</html>

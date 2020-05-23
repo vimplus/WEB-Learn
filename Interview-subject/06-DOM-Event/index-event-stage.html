@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="bodyNode">
+    <div id="divNode">
+        <p id="pNode">
+            <span id="spanNode">Hello</span>
+        </p>
+    </div>
+    <script>
+        window.onload = function () {
+            var bodyNode = document.getElementById('bodyNode');
+            var divNode = document.getElementById('divNode');
+            var pNode = document.getElementById('pNode');
+            var spanNode = document.getElementById('spanNode');
+
+
+            bodyNode.addEventListener('click', function (event) {
+                alert('bodyNode x');
+            }, true)
+
+            divNode.addEventListener('click', function (event) {
+                alert('divNode x');
+            }, true)
+
+            pNode.addEventListener('click', function (event) {
+                alert('pNode x');
+            }, true)
+
+            spanNode.addEventListener('click', function (event) {
+                alert('spanNode x');
+            }, true)
+
+
+
+
+            bodyNode.addEventListener('click', function (event) {
+                alert('bodyNode');
+            }, false)
+
+            divNode.addEventListener('click', function (event) {
+                alert('divNode');
+            }, false)
+
+            pNode.addEventListener('click', function (event) {
+                alert('pNode');
+            }, false)
+
+            spanNode.addEventListener('click', function (event) {
+                alert('spanNode');
+            }, false)
+
+
+            // spanNode.attachEvent('click', function (event) {
+                
+            // })
+
+            
+        }
+    </script>
+</body>
+</html>
