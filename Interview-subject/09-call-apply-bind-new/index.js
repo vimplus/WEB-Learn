@@ -72,3 +72,20 @@ var obj = {
 const getValue = obj.getValue;
 const v = getValue._apply(obj, [1, 2, 3]);
 console.log(v);
+
+
+
+const codeMap = {
+    10000: '请求成功！',
+    20000: '参数错误'
+}
+
+function getResponse(data, code) {
+    const res = {
+        code: code,
+        msg: codeMap[code],
+        data
+    }
+    return res;
+}
+
