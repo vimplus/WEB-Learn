@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 700px;"></div>
+    <ul>
+        <li><img src="./imgs/logo.png" lazySrc="./imgs/timg-1.jpeg" ></li>
+        <li><img src="./imgs/logo.png" lazySrc="./imgs/timg-2.jpeg" ></li>
+        <li><img src="./imgs/logo.png" lazySrc="./imgs/timg-3.jpeg" ></li>
+        <li><img src="./imgs/logo.png" lazySrc="./imgs/timg-4.jpeg" ></li>
+        <li><img src="./imgs/logo.png" lazySrc="./imgs/timg-5.jpeg" ></li>
+        <li><img src="./imgs/logo.png" lazySrc="./imgs/timg-6.jpeg" ></li>
+    </ul>
+
+    <script>
+        const imgs = document.querySelectorAll('img');
+        const clientHeight = document.documentElement.clientHeight;
+
+        function lazyLoad(params) {
+            const scrollTop = document.documentElement.scrollTop;
+
+            for (let i = 0; i < imgs.length; i++) {
+                const x = clientHeight + scrollTop - imgs[i].offsetTop;
+
+                if (x > 0 && x < clientHeight + imgs[i].height) {
+                    imgs[i].src = imgs[i].getAttribute('lazySrc');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', lazyLoad);
+    </script>
+</body>
+</html>
