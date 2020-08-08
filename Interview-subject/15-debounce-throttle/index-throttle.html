@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 2000px;"></div>
+    <script>
+        function throttle(func, daly) {
+            let preTime = Date.now();
+            
+            return function (params) {
+                let nowTime = Date.now();
+                let _this = this;
+                let args = arguments;
+
+                if (nowTime - preTime > daly) {
+                    func.apply(_this, args);
+                    preTime = Date.now();
+                }
+            }
+        }
+
+        function fn() {
+            console.log('节流');
+        }
+        window.addEventListener('scroll', throttle(fn, 1000));
+    </script>
+</body>
+</html>
+
+

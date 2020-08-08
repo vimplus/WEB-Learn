@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 2000px;"></div>
+    <script>
+        function debounce(func, daly) {
+            let timer = null;
+            
+            return function (params) {
+                let _this = this;
+                let args = arguments;
+                clearTimeout(timer)
+                timer = setTimeout(() => {
+                    func.apply(_this, args)
+                }, daly);
+            }
+        }
+
+        function fn() {
+            console.log('防抖')
+        }
+        window.addEventListener('scroll', debounce(fn, 1000));
+    </script>
+</body>
+</html>
+
+
