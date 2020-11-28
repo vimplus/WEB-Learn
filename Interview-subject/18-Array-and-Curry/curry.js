@@ -35,3 +35,11 @@ debugger
 console.log('sum:', sum(2)(3)(5))
 
 
+
+function isType(type) {
+    
+}
+
+const isString = isType('String');
+
+
